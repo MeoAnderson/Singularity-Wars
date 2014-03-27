@@ -2,14 +2,14 @@
 //  AppDelegate.m
 //  Singularity Wars
 //
-//  Created by Vasco Patrício on 18/03/14.
+//  Created by Vasco Patrício on 06/03/14.
 //  Copyright Vasco Patrício 2014. All rights reserved.
 //
 // -----------------------------------------------------------------------
 
 #import "AppDelegate.h"
-#import "IntroScene.h"
-#import "HelloWorldScene.h"
+#import "Menu.h"
+
 
 @implementation AppDelegate
 
@@ -34,7 +34,7 @@
 		// Use a simplified coordinate system that is shared across devices.
 //		CCSetupScreenMode: CCScreenModeFixed,
 		// Run in portrait mode.
-//		CCSetupScreenOrientation: CCScreenOrientationPortrait,
+        CCSetupScreenOrientation: CCScreenOrientationLandscape,
 		// Run at a reduced framerate.
 //		CCSetupAnimationInterval: @(1.0/30.0),
 		// Run the fixed timestep extra fast.
@@ -49,7 +49,7 @@
 -(CCScene *)startScene
 {
 	// This method should return the very first scene to be run when your app starts.
-	return [IntroScene scene];
+	return [Menu scene];
 }
 
 @end
