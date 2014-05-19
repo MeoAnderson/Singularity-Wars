@@ -1,9 +1,12 @@
 //
-//  IntroScene.m
+//  Game.m
 //  Singularity Wars
 //
-//  Created by Vasco Patrício on 06/03/14.
-//  Copyright Vasco Patrício 2014. All rights reserved.
+//  Created by Vasco Patrício on 07/03/14.
+//  Copyright (c) 2014 Vasco Patrício. All rights reserved.
+//
+//
+//"Singularity Wars" developed for Mobile Applications Development
 //
 // -----------------------------------------------------------------------
 
@@ -55,8 +58,7 @@
     
     // "Back to Main Menu" scene button
     CCButton *backToMenuButton = [CCButton buttonWithTitle:@"Back to Main Menu" fontName:@"technoid" fontSize:45];
-    backToMenuButton.positionType = CCPositionTypeNormalized;
-    backToMenuButton.position = ccp(0.5f, 0.2f);
+    backToMenuButton.position = ccp(winSize.width/2,winSize.height/5);
     [backToMenuButton setTarget:self selector:@selector(onBackToMenuClicked:)];
     [self addChild:backToMenuButton];
 

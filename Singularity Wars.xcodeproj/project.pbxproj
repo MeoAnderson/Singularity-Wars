@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C61BA65418D9C80B0001613B /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C61BA65318D9C80B0001613B /* Default~ipad.png */; };
+		C647D1FC192AB2630063B4DB /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FB192AB2630063B4DB /* ship.png */; };
+		C647D1FE192ABBCB0063B4DB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FD192ABBCB0063B4DB /* enemy.png */; };
+		C647D200192ABC870063B4DB /* enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FF192ABC870063B4DB /* enemy2.png */; };
+		C647D202192ABD4D0063B4DB /* enemy3.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D201192ABD4D0063B4DB /* enemy3.png */; };
 		C6B7F9A018D8BB8500FB19F4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B7F99F18D8BB8500FB19F4 /* QuartzCore.framework */; };
 		C6B7F9A218D8BB8500FB19F4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B7F9A118D8BB8500FB19F4 /* OpenGLES.framework */; };
 		C6B7F9A418D8BB8500FB19F4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6B7F9A318D8BB8500FB19F4 /* OpenAL.framework */; };
@@ -252,6 +256,10 @@
 
 /* Begin PBXFileReference section */
 		C61BA65318D9C80B0001613B /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad.png"; path = "Singularity Wars/Assets Singularity Wars/Backgrounds/Default~ipad.png"; sourceTree = SOURCE_ROOT; };
+		C647D1FB192AB2630063B4DB /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
+		C647D1FD192ABBCB0063B4DB /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		C647D1FF192ABC870063B4DB /* enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy2.png; sourceTree = "<group>"; };
+		C647D201192ABD4D0063B4DB /* enemy3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy3.png; sourceTree = "<group>"; };
 		C6B7F99C18D8BB8500FB19F4 /* Singularity Wars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Singularity Wars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B7F99F18D8BB8500FB19F4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C6B7F9A118D8BB8500FB19F4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1682,6 +1690,10 @@
 		C6B7FC6F18D8C0F000FB19F4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C647D201192ABD4D0063B4DB /* enemy3.png */,
+				C647D1FF192ABC870063B4DB /* enemy2.png */,
+				C647D1FD192ABBCB0063B4DB /* enemy.png */,
+				C647D1FB192AB2630063B4DB /* ship.png */,
 				C6B7FC7018D8C0F000FB19F4 /* testeShip.png */,
 				C6B7FC7118D8C0F000FB19F4 /* testeShip2.png */,
 			);
@@ -1810,6 +1822,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6B7F9CF18D8BB8500FB19F4 /* Icon-120.png in Resources */,
+				C647D1FC192AB2630063B4DB /* ship.png in Resources */,
 				C6B7FC8018D8C0F000FB19F4 /* Background.png in Resources */,
 				C6B7FC8918D8C0F000FB19F4 /* teste.png in Resources */,
 				C6B7FC8418D8C0F000FB19F4 /* cube.png in Resources */,
@@ -1831,6 +1844,7 @@
 				C6B7F9D318D8BB8500FB19F4 /* Icon-Small-50.png in Resources */,
 				C6B7FC9518D8C0F000FB19F4 /* otherButton_sfx.mp3 in Resources */,
 				C6B7FBBC18D8BB8900FB19F4 /* LICENSE_Kazmath.txt in Resources */,
+				C647D202192ABD4D0063B4DB /* enemy3.png in Resources */,
 				C6B7FC8718D8C0F000FB19F4 /* grid.png in Resources */,
 				C6B7FC9818D8C0F000FB19F4 /* particle.png in Resources */,
 				C6B7F9C718D8BB8500FB19F4 /* Icon-72.png in Resources */,
@@ -1843,6 +1857,7 @@
 				C61BA65418D9C80B0001613B /* Default~ipad.png in Resources */,
 				C6B7FC8F18D8C0F000FB19F4 /* testeShip.png in Resources */,
 				C6B7FC8A18D8C0F000FB19F4 /* technoid.ttf in Resources */,
+				C647D1FE192ABBCB0063B4DB /* enemy.png in Resources */,
 				C6B7FC9118D8C0F000FB19F4 /* game.m4a in Resources */,
 				C6B7F9CD18D8BB8500FB19F4 /* Icon-76@2x.png in Resources */,
 				C6B7FC4118D8BB8A00FB19F4 /* LICENSE_Chipmunk.txt in Resources */,
@@ -1852,6 +1867,7 @@
 				C6B7FC8B18D8C0F000FB19F4 /* appicon.png in Resources */,
 				C6B7F9CB18D8BB8500FB19F4 /* Icon-76.png in Resources */,
 				C6B7FBA118D8BB8900FB19F4 /* ChangeLog in Resources */,
+				C647D200192ABC870063B4DB /* enemy2.png in Resources */,
 				C6B7FC5A18D8C0DE00FB19F4 /* README.rtf in Resources */,
 				C6B7F9E018D8BB8600FB19F4 /* iTunesArtwork@2x in Resources */,
 			);

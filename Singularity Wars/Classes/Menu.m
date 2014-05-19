@@ -1,9 +1,12 @@
 //
-//  HelloWorldScene.m
+//  Game.m
 //  Singularity Wars
 //
-//  Created by Vasco Patrício on 06/03/14.
-//  Copyright Vasco Patrício 2014. All rights reserved.
+//  Created by Vasco Patrício on 07/03/14.
+//  Copyright (c) 2014 Vasco Patrício. All rights reserved.
+//
+//
+//"Singularity Wars" developed for Mobile Applications Development
 //
 // -----------------------------------------------------------------------
 
@@ -33,23 +36,8 @@
     
     // Enable touch handling on scene node
     self.userInteractionEnabled = YES;
-
-	/*
-    - (void) playerAuthentication
-    {
-        GKLocalPlayer* localPlayer = [GKLocalPlayer localPlayer];
-        localPlayer.authenticateHandler = ^(UIViewController* viewController, NSError* error){
-        
-            if (viewController != nil){
-            
-            
-                [self showAuthentication]
-                
-            }
-        
-        
-    }
-    */
+    
+	
 	//-----------------------------------------------------------------------------------------------------------------------------------
     // Music
     [[OALSimpleAudio sharedInstance] playBg:@"wipeoutfury.mp3" loop:YES];
@@ -167,20 +155,6 @@
 	 */
 	
 	
-	// "Leaderboards" button
-	CCButton* leaderboardsButton = [CCButton buttonWithTitle:@"Leaderboards" fontName:@"technoid" fontSize:45];
-	leaderboardsButton.position = ccp(500,350);
-    //[leaderboardsButton setTarget:self selector:@selector(onLeaderboardsClicked:)];
-    [self addChild:leaderboardsButton];
-	
-	
-	/*
-	// Fade-in animation for Leaderboards button
-    CCActionFadeIn* animatingLeaderboardsButton = [CCActionFadeIn actionWithDuration:3];
-    [leaderboardsButton runAction:animatingLeaderboardsButton];
-	*/
-
-	
 	// "Options" button
 	CCButton* optionsButton = [CCButton buttonWithTitle:@"Options" fontName:@"technoid" fontSize:45];
 	optionsButton.position = ccp(500,250);
@@ -269,18 +243,8 @@
 - (void)onStartClicked:(id)sender
 {
     // back to intro scene with transition
-    [[CCDirector sharedDirector] replaceScene:[Game scene] withTransition:[CCTransition transitionFadeWithDuration:2]];
+    [[CCDirector sharedDirector] replaceScene:[Game scene] withTransition:[CCTransition transitionFadeWithDuration:0.5]];
 	[[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
-}
-
-
-- (void)onLeaderboardsClicked:(id)sender
-{
-
-    // Show a Game Center view
-    
-    GKLeaderboard* leaderBoards = [GKLeaderboard new];
-
 }
 
  
