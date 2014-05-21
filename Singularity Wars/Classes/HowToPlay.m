@@ -33,34 +33,36 @@
     
     // Get the size of the window
 	CGSize winSize = [CCDirector sharedDirector].viewSize;
-//-----------------------------------------------------------------------------------------------------------------------------------
-
+    
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
     // Sprite with background
     
     CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
     [self addChild:background];
-//-----------------------------------------------------------------------------------------------------------------------------------
     
-    // Particles
+    //-----------------------------------------------------------------------------------------------------------------------------------
     
-    CCParticleSun* particleSun = [CCParticleSun particleWithTotalParticles:1000];
-    particleSun.position = ccp(winSize.width/2,winSize.height/2);
-    particleSun.emissionRate = 100;
-    particleSun.speed = 100;
-	//particleSun.duration = -1;
-	particleSun.life = 10;
-    [self addChild:particleSun];
-//-----------------------------------------------------------------------------------------------------------------------------------
+    // Background Particles
+    
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
 
-    // Instructions text
     
-    CCLabelTTF* InstructionsTitle = [CCLabelTTF labelWithString:@"Instructions" fontName:@"technoid" fontSize:80];
-	InstructionsTitle.outlineColor = [CCColor grayColor];
-	InstructionsTitle.outlineWidth = 0.5;
-	InstructionsTitle.shadowColor = [CCColor grayColor];
-	InstructionsTitle.shadowOffset = ccp(1,1);
-    InstructionsTitle.position = ccp(winSize.width/2,winSize.height-100);
-    [self addChild:InstructionsTitle];
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
+    // Labels with instructions
+    
+    
+    CCLabelTTF* howToPlayTitle = [CCLabelTTF labelWithString:@"How to Play" fontName:@"technoid" fontSize:80];
+    howToPlayTitle.position = ccp(winSize.width/2,winSize.height-100);
+	howToPlayTitle.outlineColor = [CCColor grayColor];
+	howToPlayTitle.outlineWidth = 0.7;
+	howToPlayTitle.shadowColor = [CCColor grayColor];
+	howToPlayTitle.shadowOffset = ccp(1,1);
+    [self addChild:howToPlayTitle];
+
     
     CCLabelTTF* InstructionsHowToControl = [CCLabelTTF labelWithString:@"To control your ship," fontName:@"technoid" fontSize:30];
 	InstructionsHowToControl.outlineColor = [CCColor grayColor];
@@ -96,7 +98,7 @@
 
 
     
-//-----------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------
     
     // "Back to Main Menu" button
     

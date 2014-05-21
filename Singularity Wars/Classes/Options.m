@@ -31,6 +31,8 @@
 	CGSize winSize = [CCDirector sharedDirector].viewSize;
     
     
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
     // Sprite with background
     CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
     [self addChild:background];
@@ -39,21 +41,20 @@
     // "Options" title label
     CCLabelTTF* optionsTitle = [CCLabelTTF labelWithString:@"Options" fontName:@"technoid" fontSize:80];
 	optionsTitle.outlineColor = [CCColor grayColor];
-	optionsTitle.outlineWidth = 0.5;
+	optionsTitle.outlineWidth = 0.7;
 	optionsTitle.shadowColor = [CCColor grayColor];
 	optionsTitle.shadowOffset = ccp(1,1);
     optionsTitle.position = ccp(winSize.width/2,winSize.height-100);
     [self addChild:optionsTitle];
 
     
-    // Add particles to the scene
-    CCParticleGalaxy* particlesGalaxy = [CCParticleGalaxy particleWithTotalParticles:3000];
-	particlesGalaxy.sourcePosition = ccp(0,0);
-	particlesGalaxy.emissionRate = 500;
-	particlesGalaxy.duration = -1;
-	particlesGalaxy.life = 5.0f;
-	
-	[self addChild:particlesGalaxy];
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
+    // Background Particles
+    
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
 
     
     // "Back to Main Menu" scene button
@@ -65,6 +66,7 @@
     // done
 	return self;
 }
+
 
 - (void)onBackToMenuClicked:(id)sender
 {

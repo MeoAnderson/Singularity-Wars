@@ -36,8 +36,30 @@
 	CGSize winSize = [CCDirector sharedDirector].viewSize;
     
     // Sprite with background
-    CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
-    [self addChild:background];
+    //CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
+    //[self addChild:background];
+    
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    // Background Particles
+    
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
+    
+    
+    
+    // "Game Paused" title
+    CCLabelTTF* gamePausedTitle = [CCLabelTTF labelWithString:@"Game Paused" fontName:@"technoid" fontSize:80];
+    gamePausedTitle.position = ccp(winSize.width/2,winSize.height-100);
+	gamePausedTitle.outlineColor = [CCColor grayColor];
+	gamePausedTitle.outlineWidth = 0.7;
+	gamePausedTitle.shadowColor = [CCColor grayColor];
+	gamePausedTitle.shadowOffset = ccp(1,1);
+    [self addChild:gamePausedTitle];
+    
+    
+    
+    //-----------------------------------------------------------------------------------------------------------------------------------
     
     // "Resume Game" button
     CCButton *resumeButton = [CCButton buttonWithTitle:@"Resume Game" fontName:@"technoid" fontSize:45];
@@ -45,12 +67,14 @@
     [resumeButton setTarget:self selector:@selector(onResumeGameClicked:)];
     [self addChild:resumeButton];
     
+    
     // "Back to Main Menu" button
     
     CCButton *backMainMenuButton = [CCButton buttonWithTitle:@"Back to Main Menu" fontName:@"technoid" fontSize:45];
     backMainMenuButton.position = ccp(winSize.width/2,winSize.height/3);
     [backMainMenuButton setTarget:self selector:@selector(onBackMainMenuClicked:)];
     [self addChild:backMainMenuButton];
+    
     
     // done
 	return self;

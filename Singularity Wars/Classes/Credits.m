@@ -40,14 +40,11 @@
     
 
     //-----------------------------------------------------------------------------------------------------------------------------------
-    // Particles
+    // Background Particles
     
-    CCParticleFireworks* particleMeteor = [CCParticleFireworks particleWithTotalParticles:3000];
-    particleMeteor.position = ccp(winSize.width/2,winSize.height/2);
-    particleMeteor.emissionRate = 500;
-	particleMeteor.duration = -1;
-	particleMeteor.life = 5.0f;
-    [self addChild:particleMeteor];
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +54,7 @@
     
     CCLabelTTF* creditsTitle = [CCLabelTTF labelWithString:@"Credits" fontName:@"technoid" fontSize:80];
 	creditsTitle.outlineColor = [CCColor grayColor];
-	creditsTitle.outlineWidth = 0.5;
+	creditsTitle.outlineWidth = 0.7;
 	creditsTitle.shadowColor = [CCColor grayColor];
 	creditsTitle.shadowOffset = ccp(1,1);
     creditsTitle.position = ccp(winSize.width/2,winSize.height-100);
@@ -119,7 +116,7 @@
     [self addChild:labelCocos2dDevelopers];
 
     
-    // "and Community"
+    // "and Community" label
     
     CCLabelTTF* labelCocos2dCommunity = [CCLabelTTF labelWithString:@"and Community" fontName:@"technoid" fontSize:40];
 	labelCocos2dCommunity.outlineColor = [CCColor grayColor];
@@ -132,6 +129,7 @@
     
 
     //-----------------------------------------------------------------------------------------------------------------------------------
+    
     //Buttons
     
     // "Back to Main Menu" scene button

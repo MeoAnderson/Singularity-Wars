@@ -18,6 +18,7 @@
 
 #import "Game.h"
 
+
 @implementation Game
 
 + (Game *)scene
@@ -36,28 +37,26 @@
     // Get the size of the window
 	CGSize winSize = [CCDirector sharedDirector].viewSize;
 
-//-----------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------
     
     // Gameplay timer - TBD
     // To be done
 
-//-----------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------
 
     // Sprite with background
     CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
     [self addChild:background];
     
-    // Particles
-    CCParticleExplosion* particlesBackground = [CCParticleExplosion particleWithTotalParticles:2000];
-	particlesBackground.color = [CCColor orangeColor];
-    particlesBackground.speed = 150.0f;
-    particlesBackground.duration = -1;
-    particlesBackground.emissionRate = 700;
-    particlesBackground.sourcePosition = ccp(0,0);
-    [self addChild:particlesBackground];
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    // Background Particles
     
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
     
-//-----------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
     // Grid sprite
     
     CCSprite* grid = [CCSprite spriteWithImageNamed:@"grid.png"];
@@ -70,7 +69,7 @@
     [grid runAction:repeatMoveGrid];
     [self addChild:grid];
 
-//-----------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------
     
     //Character sprites, animation & other atributes
     
@@ -88,7 +87,8 @@
     id enemyFadeIn = [CCActionFadeIn actionWithDuration:0.5];
     id enemyFadeOutIn = [CCActionSequence actionOne:enemyFadeOut two:enemyFadeIn];
     id repeatEnemyFadeOutIn = [CCActionRepeatForever actionWithAction:enemyFadeOutIn];
-    // TBD id moveEnemyToShipLocation = [CCActionMoveTo actionWithDuration:5 position:myShip];
+    id moveEnemyToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(0,0)];
+    [enemy runAction:moveEnemyToShipLocation];
     [enemy runAction:repeatEnemyFadeOutIn];
     [self addChild:enemy];
     
@@ -110,7 +110,9 @@
     [enemy3 runAction:repeatEnemy3Rotation];
     [self addChild:enemy3];
 
-//-----------------------------------------------------------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
+    // Labels
     
     // The "time elapsed" label
     CCLabelTTF* timeElapsed = [CCLabelTTF labelWithString:@"Time Elapsed: " fontName:@"technoid" fontSize:30];
@@ -119,8 +121,7 @@
 	timeElapsed.outlineWidth = 1;
 	timeElapsed.shadowColor = [CCColor blackColor];
 	timeElapsed.shadowOffset = ccp(1,1);
-	timeElapsed.anchorPoint = ccp(0,0);
-    timeElapsed.position = ccp(50,700);
+    timeElapsed.position = ccp(150,750);
     [self addChild:timeElapsed];
 
     
@@ -131,12 +132,12 @@
 	score.outlineWidth = 1;
 	score.shadowColor = [CCColor blackColor];
 	score.shadowOffset = ccp(1,1);
-	score.anchorPoint = ccp(0,0);
-    score.position = ccp(50,650);
+    score.position = ccp(85,700);
     [self addChild:score];
-
     
-    // The "pause" button
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+    // The "Pause" button
     
     CCButton* pauseButton = [CCButton buttonWithTitle:@"Pause" fontName:@"technoid" fontSize:30];
     pauseButton.color = [CCColor whiteColor];
@@ -147,34 +148,50 @@
 //-----------------------------------------------------------------------------------------------------------------------------------
     
     // Joystiq for controlling the ship
+    /*
+    SneakyJoystickSkinnedJoystickExample* movementJoystiq = [SneakyJoystickSkinnedJoystickExample spriteWithImageNamed:@"testJoystiq.png"];
+    movementJoystiq.position = ccp(150, 150);
+    movementJoystiq.scale = 0.5;
+    movementJoystiq.opacity = 0.5;
     
-    CCSprite* shipMovementJoystiq = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
-    shipMovementJoystiq.position = ccp(150,150);
-    shipMovementJoystiq.scale = 0.5;
-    [self addChild:shipMovementJoystiq];
+    [self addChild:movementJoystiq];
+    
     
     // Joystiq for controlling the direction the ship is shooting and facing
     
-    CCSprite* shipShootingJoystiq = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
-    shipShootingJoystiq.position = ccp(850,150);
-    shipShootingJoystiq.scale = 0.5;
-    [self addChild:shipShootingJoystiq];
+    SneakyJoystickSkinnedJoystickExample* shootingJoystiq = [SneakyJoystickSkinnedJoystickExample spriteWithImageNamed:@"testJoystiq.png"];
+    shootingJoystiq.position = ccp(850,150);
+    shootingJoystiq.scale = 0.5;
+    shootingJoystiq.opacity = 0.5;
+    [self addChild:shootingJoystiq];
+*/
+    
+    
+    ZJoystick* leftJoystiq = [ZJoystick joystickNormalSpriteFile:@"Joystick_norm.png" selectedSpriteFile:@"JoystickContainer_norm.png" controllerSpriteFile:@"JoystickContainer_trans.png"];
+    
+    leftJoystiq.position = ccp(150,150);
+    
+    [self addChild:leftJoystiq];
+    
+    
     
     // Background music for game
     [[OALSimpleAudio sharedInstance] playBg:@"game.m4a" loop:YES];
-    
-    /* ADD GAME LOGIC HERE
-     - Add ship movement;
-     - Add ship heading/shooting;
-     - Creation and deployment of enemies;
-     - Add collisions;
-    */
     
      // done
 	return self;
      
 }
 
+/*
+- (void)tick:(float)delta
+
+{
+
+    [self applyJoystiq:movementJoystiq toNode];
+
+}
+*/
 - (void)onPauseClicked:(id)sender
 {
     // Pause the game
@@ -185,3 +202,18 @@
 
 
 @end
+
+//LEFTOVER CODE
+/*
+
+ CCSprite* shipMovementJoystiq = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+ shipMovementJoystiq.position = ccp(150,150);
+ shipMovementJoystiq.scale = 0.5;
+ [self addChild:shipMovementJoystiq];
+
+ CCSprite* shipShootingJoystiq = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+ shipShootingJoystiq.position = ccp(850,150);
+ shipShootingJoystiq.scale = 0.5;
+ [self addChild:shipShootingJoystiq];
+ 
+*/

@@ -15,6 +15,10 @@
 #import "Menu.h"
 #import "Options.h"
 #import "Pause.h"
+#import "SneakyJoystick.h"
+#import "SneakyJoystickSkinnedJoystickExample.h"
+#import "ColoredCircleSprite.h"
+#import "ZJoystick.h"
 
 
 @interface Game : CCScene

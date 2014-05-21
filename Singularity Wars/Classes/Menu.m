@@ -16,11 +16,19 @@
 #import "Game.h"
 #import "HowToPlay.h"
 
+@implementation RipplesLayer : CCNode  {
+
+    CCSpriteWaveGenerator* rippledGrid;
+
+}
+
+@end
 
 @implementation Menu
 
 + (Menu *)scene
 {
+
     return [[self alloc] init];
 }
 
@@ -45,142 +53,95 @@
     
 	//-----------------------------------------------------------------------------------------------------------------------------------
     // Background, with its attributes and fade-in animation
-    CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
-    background.position = ccp(winSize.width/2,winSize.height/2);
-	background.scale = 0.5;
-    [self addChild:background];
-	
-	
-    /*
-    CCActionFadeIn* animatingBackground = [CCActionFadeIn actionWithDuration:2];
-    animatingBackground.duration = 2;
-    [background runAction:animatingBackground];
-	*/
+    //CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
+    //background.position = ccp(winSize.width/2,winSize.height/2);
+	//background.scale = 0.5;
+    //[self addChild:background];
     
-	//-----------------------------------------------------------------------------------------------------------------------------------
-    // Particles
-    CCParticleExplosion* particlesBackground = [CCParticleExplosion particleWithTotalParticles:2000];
-	particlesBackground.color = [CCColor orangeColor];
-    particlesBackground.speed = 150.0f;
-    particlesBackground.duration = -1;
-    particlesBackground.emissionRate = 700;
-    particlesBackground.sourcePosition = ccp(0,0);
-    [self addChild:particlesBackground];
-	
-	
-	/*
-	CCParticleGalaxy* particlesGalaxy = [CCParticleGalaxy particleWithTotalParticles:2000];
-	
-	particlesGalaxy.color = [CCColor orangeColor];
-	particlesGalaxy.sourcePosition = ccp(0,200);
-	particlesGalaxy.emissionRate = 500;
-	particlesGalaxy.duration = -1;
-	particlesGalaxy.life = 4.0f;
-	
-	[self addChild:particlesGalaxy];
-	*/
-	
-	
-	//-----------------------------------------------------------------------------------------------------------------------------------
-    // Grid sprite, fade-in animation and sine movement (for wave effect)
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    // Background Particles
+    
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
+    
+    
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    // Grid sprite, and its rotation
 	
     CCSprite* grid = [CCSprite spriteWithImageNamed:@"grid.png"];
+    CCSpriteWaveGenerator* gridWave = [[CCSpriteWaveGenerator alloc] initWithCCSprite:grid];
+    
+    CCSprite* rippledGrid = gridWave.rippledSprite;
+    //rippledGrid.position = ccp(winSize.width/2,winSize.height/2);
     grid.position = ccp(winSize.width/2,winSize.height/2);
 	grid.scale = 0.8;
-	grid.opacity = 0.5;
-    [self addChild:grid];
-    /*
-	// Fade-in animation for the grid
-    CCActionFadeIn* animatingGrid = [CCActionFadeIn actionWithDuration:2];
-    [grid runAction:animatingGrid];
-	*/
-	// TBD - WAVE MOVEMENT FOR THE GRID - Temporary Effect in place
+	grid.opacity = 0.3;
+    [self addChild:rippledGrid];
+    
+    
+    
+	//id gridRotate = [CCActionRotateBy actionWithDuration:20 angle:-360];
+	//id repeatAction = [CCActionRepeatForever actionWithAction:gridRotate];
 	
-	id jump = [CCActionRotateBy actionWithDuration:20 angle:-360];
-	id action = [CCActionEaseElastic actionWithAction:jump];
-	id repeatAction = [CCActionRepeatForever actionWithAction:action];
-	
-	[grid runAction:repeatAction];
+	//[grid runAction:repeatAction];
+    
     
 	//-----------------------------------------------------------------------------------------------------------------------------------
-	//Title text, and its fade-in animation
+	//Title text
 	
     // "Singularity Wars" title, with its attributes
     CCLabelTTF* title = [CCLabelTTF labelWithString:@"Singularity Wars" fontName:@"technoid" fontSize:80];
 	
 	title.outlineColor = [CCColor grayColor];
-	title.outlineWidth = 0.5;
+	title.outlineWidth = 0.7;
 	title.shadowColor = [CCColor grayColor];
 	title.shadowOffset = ccp(1,1);
-	title.anchorPoint = ccp(0,0);
-    title.position = ccp(70,650);
+    title.position = ccp(winSize.width/2,winSize.height-100);
     [self addChild:title];
-    
-    /*
-    // Fade-in animation for title
-    CCActionFadeIn* animatingTitle = [CCActionFadeIn actionWithDuration:3];
-    [title runAction:animatingTitle];
-	*/
-	
+   
 	// Animation for the Title text
 	
-	id moveTitle = [CCActionFadeOut actionWithDuration:3];
-	id actionTitle = [CCActionEaseSineInOut actionWithAction:moveTitle];
+	id titleFadeOut = [CCActionFadeOut actionWithDuration:2];
+    id titleFadeIn = [CCActionFadeIn actionWithDuration:2];
+	id actionTitle = [CCActionSequence actionOne:titleFadeOut two:titleFadeIn];
 	id repeatActionTitle = [CCActionRepeatForever actionWithAction:actionTitle];
+    
 	[title runAction:repeatActionTitle];
 	
 	
 	//-----------------------------------------------------------------------------------------------------------------------------------
-	//Buttons
+	// Buttons
 	
     
     // "How to play" button
     CCButton* howToPlayButton = [CCButton buttonWithTitle:@"How to Play" fontName:@"technoid" fontSize:45];
-	howToPlayButton.position = ccp(500,550);
+    howToPlayButton.position = ccp(winSize.width/2,winSize.height-300);
     [howToPlayButton setTarget:self selector:@selector(onHowToPlayClicked:)];
     [self addChild:howToPlayButton];
 
     
     // "Start" button
     CCButton* startButton = [CCButton buttonWithTitle:@"Start" fontName:@"technoid" fontSize:45];
-	startButton.position = ccp(500,450);
+    startButton.position = ccp(winSize.width/2,winSize.height-400);
     [startButton setTarget:self selector:@selector(onStartClicked:)];
     [self addChild:startButton];
 	
 	
-	/*
-	// Fade-in animation for start button
-    CCActionFadeIn* animatingStartButton = [CCActionFadeIn actionWithDuration:3];
-    [startButton runAction:animatingStartButton];
-	 */
-	
-	
 	// "Options" button
 	CCButton* optionsButton = [CCButton buttonWithTitle:@"Options" fontName:@"technoid" fontSize:45];
-	optionsButton.position = ccp(500,250);
+    optionsButton.position = ccp(winSize.width/2,winSize.height-500);
     [optionsButton setTarget:self selector:@selector(onOptionsClicked:)];
     [self addChild:optionsButton];
-	
-	
-	/*
-	// Fade-in animation for Options button
-    CCActionFadeIn* animatingOptionsButton = [CCActionFadeIn actionWithDuration:3];
-    [optionsButton runAction:animatingOptionsButton];
-	 */
-	
+		
 	
 	// "Credits" button
 	CCButton* creditsButton = [CCButton buttonWithTitle:@"Credits" fontName:@"technoid" fontSize:45];
-	creditsButton.position = ccp(500,150);
+    creditsButton.position = ccp(winSize.width/2,winSize.height-600);
     [creditsButton setTarget:self selector:@selector(onCreditsClicked:)];
     [self addChild:creditsButton];
-	
-	
-	/*
-	// Fade-in animation for Credits button
-    CCActionFadeIn* animatingCreditsButton = [CCActionFadeIn actionWithDuration:3];
-    [creditsButton runAction:animatingCreditsButton];
-	 */
+
 
     // done
 	return self;
