@@ -13,6 +13,10 @@
 #import "cocos2d.h"
 #import "OALSimpleAudio.h"
 #import <GameKit/GameKit.h>
+#import "Game.h"
+#import "SneakyJoystick.h"
+#import "SneakyInput_0_4_0AppDelegate.h"
+#import "SneakyJoystickSkinnedBase.h"
 
 @interface AppDelegate : CCAppDelegate
 @end

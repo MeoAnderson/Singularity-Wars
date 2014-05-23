@@ -23,10 +23,6 @@
 		C62E026B192C07AB0019A471 /* heightfield_vert_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0266192C07AB0019A471 /* heightfield_vert_shader.vsh */; };
 		C62E026C192C07AB0019A471 /* ripple_frag_shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0267192C07AB0019A471 /* ripple_frag_shader.fsh */; };
 		C62E026D192C07AB0019A471 /* ripple_vert_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0268192C07AB0019A471 /* ripple_vert_shader.vsh */; };
-		C62E0274192C244C0019A471 /* Joystick_norm.png in Resources */ = {isa = PBXBuildFile; fileRef = C62E026F192C244C0019A471 /* Joystick_norm.png */; };
-		C62E0275192C244C0019A471 /* JoystickContainer_norm.png in Resources */ = {isa = PBXBuildFile; fileRef = C62E0270192C244C0019A471 /* JoystickContainer_norm.png */; };
-		C62E0276192C244C0019A471 /* JoystickContainer_trans.png in Resources */ = {isa = PBXBuildFile; fileRef = C62E0271192C244C0019A471 /* JoystickContainer_trans.png */; };
-		C62E0277192C244C0019A471 /* ZJoystick.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0273192C244C0019A471 /* ZJoystick.m */; };
 		C647D1FC192AB2630063B4DB /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FB192AB2630063B4DB /* ship.png */; };
 		C647D1FE192ABBCB0063B4DB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FD192ABBCB0063B4DB /* enemy.png */; };
 		C647D200192ABC870063B4DB /* enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FF192ABC870063B4DB /* enemy2.png */; };
@@ -302,11 +298,6 @@
 		C62E0266192C07AB0019A471 /* heightfield_vert_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = heightfield_vert_shader.vsh; sourceTree = "<group>"; };
 		C62E0267192C07AB0019A471 /* ripple_frag_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple_frag_shader.fsh; sourceTree = "<group>"; };
 		C62E0268192C07AB0019A471 /* ripple_vert_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple_vert_shader.vsh; sourceTree = "<group>"; };
-		C62E026F192C244C0019A471 /* Joystick_norm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Joystick_norm.png; sourceTree = "<group>"; };
-		C62E0270192C244C0019A471 /* JoystickContainer_norm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoystickContainer_norm.png; sourceTree = "<group>"; };
-		C62E0271192C244C0019A471 /* JoystickContainer_trans.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoystickContainer_trans.png; sourceTree = "<group>"; };
-		C62E0272192C244C0019A471 /* ZJoystick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJoystick.h; sourceTree = "<group>"; };
-		C62E0273192C244C0019A471 /* ZJoystick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJoystick.m; sourceTree = "<group>"; };
 		C647D1FB192AB2630063B4DB /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
 		C647D1FD192ABBCB0063B4DB /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		C647D1FF192ABC870063B4DB /* enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy2.png; sourceTree = "<group>"; };
@@ -777,10 +768,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B7F9AA18D8BB8500FB19F4 /* UIKit.framework in Frameworks */,
 				C6B7FCB318D8C20E00FB19F4 /* GameKit.framework in Frameworks */,
 				C6B7F9B618D8BB8500FB19F4 /* libObjectiveChipmunk.a in Frameworks */,
 				C6B7F9A418D8BB8500FB19F4 /* OpenAL.framework in Frameworks */,
-				C6B7F9AA18D8BB8500FB19F4 /* UIKit.framework in Frameworks */,
 				C6B7F9A018D8BB8500FB19F4 /* QuartzCore.framework in Frameworks */,
 				C6B7F9A818D8BB8500FB19F4 /* AVFoundation.framework in Frameworks */,
 				C6B7F9AE18D8BB8500FB19F4 /* CoreGraphics.framework in Frameworks */,
@@ -832,18 +823,6 @@
 				C62E0268192C07AB0019A471 /* ripple_vert_shader.vsh */,
 			);
 			name = WaveGenerator;
-			sourceTree = "<group>";
-		};
-		C62E026E192C24370019A471 /* ZJoystiq */ = {
-			isa = PBXGroup;
-			children = (
-				C62E026F192C244C0019A471 /* Joystick_norm.png */,
-				C62E0270192C244C0019A471 /* JoystickContainer_norm.png */,
-				C62E0271192C244C0019A471 /* JoystickContainer_trans.png */,
-				C62E0272192C244C0019A471 /* ZJoystick.h */,
-				C62E0273192C244C0019A471 /* ZJoystick.m */,
-			);
-			name = ZJoystiq;
 			sourceTree = "<group>";
 		};
 		C6B049A4192BAF8F006F0C1A /* Particles */ = {
@@ -937,7 +916,6 @@
 		C6B7F9E118D8BB8600FB19F4 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				C62E026E192C24370019A471 /* ZJoystiq */,
 				C62E0262192C07890019A471 /* WaveGenerator */,
 				C62E0243192BFDD40019A471 /* SneakyInput */,
 				C6B7FC5818D8C07A00FB19F4 /* Licenses */,
@@ -1966,14 +1944,12 @@
 				C6B7FC9818D8C0F000FB19F4 /* particle.png in Resources */,
 				C62E026D192C07AB0019A471 /* ripple_vert_shader.vsh in Resources */,
 				C6B7F9C718D8BB8500FB19F4 /* Icon-72.png in Resources */,
-				C62E0274192C244C0019A471 /* Joystick_norm.png in Resources */,
 				C6B7FB1518D8BB8800FB19F4 /* LICENSE_cocos2d.txt in Resources */,
 				C6B7FC8218D8C0F000FB19F4 /* background3.png in Resources */,
 				C6B7F9DE18D8BB8600FB19F4 /* iTunesArtwork in Resources */,
 				C6B7FC9318D8C0F000FB19F4 /* menu2.m4a in Resources */,
 				C6B7F9D918D8BB8500FB19F4 /* Icon-Spotlight-iOS7.png in Resources */,
 				C6B7FC9418D8C0F000FB19F4 /* otherButton2_sfx.mp3 in Resources */,
-				C62E0276192C244C0019A471 /* JoystickContainer_trans.png in Resources */,
 				C61BA65418D9C80B0001613B /* Default~ipad.png in Resources */,
 				C6B7FC8F18D8C0F000FB19F4 /* testeShip.png in Resources */,
 				C6B7FC8A18D8C0F000FB19F4 /* technoid.ttf in Resources */,
@@ -1981,7 +1957,6 @@
 				C6B7FC9118D8C0F000FB19F4 /* game.m4a in Resources */,
 				C6B7F9CD18D8BB8500FB19F4 /* Icon-76@2x.png in Resources */,
 				C6B049A6192BAFA4006F0C1A /* BlackHole-SingularityWars.plist in Resources */,
-				C62E0275192C244C0019A471 /* JoystickContainer_norm.png in Resources */,
 				C6B7FC4118D8BB8A00FB19F4 /* LICENSE_Chipmunk.txt in Resources */,
 				C62E026B192C07AB0019A471 /* heightfield_vert_shader.vsh in Resources */,
 				C6B7FC8118D8C0F000FB19F4 /* Background2.png in Resources */,
@@ -2154,7 +2129,6 @@
 				C6B7FA7A18D8BB8700FB19F4 /* CCScene.m in Sources */,
 				C6B7FAA818D8BB8700FB19F4 /* CCTexture.m in Sources */,
 				C6B7FB3A18D8BB8800FB19F4 /* ALCaptureDevice.m in Sources */,
-				C62E0277192C244C0019A471 /* ZJoystick.m in Sources */,
 				C6B7FA7618D8BB8700FB19F4 /* CCResponderManager.m in Sources */,
 				C6B7FA0E18D8BB8600FB19F4 /* CCConfiguration.m in Sources */,
 				C6B7FB5118D8BB8900FB19F4 /* ALWrapper.m in Sources */,

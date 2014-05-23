@@ -11,9 +11,9 @@
 // -----------------------------------------------------------------------
 
 
-//TAREFAS PARA HOJE 19/05/14
-//IMPLEMENTAR CLASSE NAVE (PLAYER)
-//IMPLEMENTAR INIMIGOS
+//TAREFAS PARA HOJE 22/05/14
+//Joysticks!!
+//Colisões!!
 
 
 #import "Game.h"
@@ -25,22 +25,65 @@
 {
 	return [[self alloc] init];
 }
+
+
+- (void) initJoystick {
+    
+    
+    SneakyJoystickSkinnedBase* joystickBase = [[SneakyJoystickSkinnedBase alloc] init];
+    joystickBase.backgroundSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    joystickBase.thumbSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    joystickBase.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, 200, 200)];
+    joystickBase.position = ccp(150,150);
+    joystickBase.scale = 0.5;
+    
+    [self addChild:joystickBase];
+    leftJoystick = joystickBase.joystick;
+    
+}
+
+- (void) initJoystickShooting {
+    
+    SneakyJoystickSkinnedBase* rightJoystickBase = [[SneakyJoystickSkinnedBase alloc] init];
+    rightJoystickBase.backgroundSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    rightJoystickBase.thumbSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    rightJoystickBase.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, 200, 200)];
+    rightJoystickBase.position = ccp(875,150);
+    rightJoystickBase.scale = 0.5;
+    
+    [self addChild:rightJoystickBase];
+    rightJoystick = rightJoystickBase.joystick;
+    
+}
+/*
+- (void) update:(CCTime)deltaTime {
+    
+    CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 240);
+    CGPoint newPosition = ccp(myShip.position.x + scaledVelocity.x * delta, myShip.position.y + scaledVelocity.y *delta);
+    [myShip setPosition:newPosition];
+    
+}
+*/
+
 - (id)init
 {
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
     
-     self.userInteractionEnabled = YES;
-     self.multipleTouchEnabled = YES;
-    
     // Get the size of the window
 	CGSize winSize = [CCDirector sharedDirector].viewSize;
 
+    
+     self.userInteractionEnabled = YES;
+     self.multipleTouchEnabled = YES;
+    
+     [self initJoystick];
+    
+    
     //-----------------------------------------------------------------------------------------------------------------------------------
     
     // Gameplay timer - TBD
-    // To be done
 
     //-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -73,24 +116,74 @@
     
     //Character sprites, animation & other atributes
     
-    // Player's ship
+    
+    //My ship
     CCSprite* myShip = [CCSprite spriteWithImageNamed:@"ship.png"];
     myShip.position = ccp(winSize.width/2,winSize.height/2);
-    //[myShip setTarget:self selector:@selector(onShipMovement:)];
     [self addChild:myShip];
+
     
-    // Enemy
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
+    // Ghost Enemy (Sprite creation, positioning off-screen, etc TBD)
+    
     CCSprite* enemy = [CCSprite spriteWithImageNamed:@"enemy.png"];
-    enemy.position = ccp(600,600);
+    //enemy.position = ccp(800,500);
     
+    int minY = enemy.contentSize.height / 2;// Variable for size
+    int maxY = self.contentSize.height - enemy.contentSize.height / 2;
+    int rangeY = maxY - minY;
+    int randomY = (arc4random() % rangeY) + minY;
+    
+    enemy.position = CGPointMake(self.contentSize.width + enemy.contentSize.width/2, randomY);
+    
+    int minDuration = 2.0;
+    int maxDuration = 4.0;
+    int rangeDuration = maxDuration - minDuration;
+    int randomDuration = (arc4random() % rangeDuration) + minDuration;
+    CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
+    CCAction *actionRemove = [CCActionRemove action];
+    
+    [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
+
+
+    // Para aplicar fade in e out ao Ghost
     id enemyFadeOut = [CCActionFadeOut actionWithDuration:0.5];
     id enemyFadeIn = [CCActionFadeIn actionWithDuration:0.5];
     id enemyFadeOutIn = [CCActionSequence actionOne:enemyFadeOut two:enemyFadeIn];
     id repeatEnemyFadeOutIn = [CCActionRepeatForever actionWithAction:enemyFadeOutIn];
+    [enemy runAction:repeatEnemyFadeOutIn];
+    
+    // Para mover
     id moveEnemyToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(0,0)];
     [enemy runAction:moveEnemyToShipLocation];
-    [enemy runAction:repeatEnemyFadeOutIn];
+    
+    
+    
     [self addChild:enemy];
+    
+    /*
+     int minY = enemy.contentSize.height / 2;
+     int maxY = self.contentSize.height - enemy.contentSize.height / 2;
+     int rangeY = maxY - minY;
+     int randomY = (arc4random() % rangeY) + minY;
+     
+     
+     enemy.position = CGPointMake(self.contentSize.width + enemy.contentSize.width/2, randomY);
+     
+     int minDuration = 2.0;
+     int maxDuration = 4.0;
+     int rangeDuration = maxDuration - minDuration;
+     int randomDuration = (arc4random() % rangeDuration) + minDuration;
+    
+    
+    [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
+    
+    CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
+    CCAction *actionRemove = [CCActionRemove action];
+    */
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    
     
     // Enemy 2
     CCSprite* enemy2 = [CCSprite spriteWithImageNamed:@"enemy2.png"];
@@ -145,53 +238,20 @@
     [pauseButton setTarget:self selector:@selector(onPauseClicked:)];
     [self addChild:pauseButton];
 
-//-----------------------------------------------------------------------------------------------------------------------------------
-    
-    // Joystiq for controlling the ship
-    /*
-    SneakyJoystickSkinnedJoystickExample* movementJoystiq = [SneakyJoystickSkinnedJoystickExample spriteWithImageNamed:@"testJoystiq.png"];
-    movementJoystiq.position = ccp(150, 150);
-    movementJoystiq.scale = 0.5;
-    movementJoystiq.opacity = 0.5;
-    
-    [self addChild:movementJoystiq];
-    
-    
-    // Joystiq for controlling the direction the ship is shooting and facing
-    
-    SneakyJoystickSkinnedJoystickExample* shootingJoystiq = [SneakyJoystickSkinnedJoystickExample spriteWithImageNamed:@"testJoystiq.png"];
-    shootingJoystiq.position = ccp(850,150);
-    shootingJoystiq.scale = 0.5;
-    shootingJoystiq.opacity = 0.5;
-    [self addChild:shootingJoystiq];
-*/
-    
-    
-    ZJoystick* leftJoystiq = [ZJoystick joystickNormalSpriteFile:@"Joystick_norm.png" selectedSpriteFile:@"JoystickContainer_norm.png" controllerSpriteFile:@"JoystickContainer_trans.png"];
-    
-    leftJoystiq.position = ccp(150,150);
-    
-    [self addChild:leftJoystiq];
-    
-    
+    //-----------------------------------------------------------------------------------------------------------------------------------
     
     // Background music for game
     [[OALSimpleAudio sharedInstance] playBg:@"game.m4a" loop:YES];
+
+    [self initJoystick];
+    [self initJoystickShooting];
     
      // done
 	return self;
      
 }
 
-/*
-- (void)tick:(float)delta
 
-{
-
-    [self applyJoystiq:movementJoystiq toNode];
-
-}
-*/
 - (void)onPauseClicked:(id)sender
 {
     // Pause the game
@@ -202,18 +262,3 @@
 
 
 @end
-
-//LEFTOVER CODE
-/*
-
- CCSprite* shipMovementJoystiq = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
- shipMovementJoystiq.position = ccp(150,150);
- shipMovementJoystiq.scale = 0.5;
- [self addChild:shipMovementJoystiq];
-
- CCSprite* shipShootingJoystiq = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
- shipShootingJoystiq.position = ccp(850,150);
- shipShootingJoystiq.scale = 0.5;
- [self addChild:shipShootingJoystiq];
- 
-*/

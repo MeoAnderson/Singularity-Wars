@@ -15,7 +15,9 @@
 #import "Credits.h"
 #import "Game.h"
 #import "HowToPlay.h"
+#import <UIKit/UIKit.h>
 
+/*
 @implementation RipplesLayer : CCNode  {
 
     CCSpriteWaveGenerator* rippledGrid;
@@ -23,7 +25,7 @@
 }
 
 @end
-
+*/
 @implementation Menu
 
 + (Menu *)scene
@@ -51,41 +53,46 @@
     [[OALSimpleAudio sharedInstance] playBg:@"wipeoutfury.mp3" loop:YES];
 	
     
-	//-----------------------------------------------------------------------------------------------------------------------------------
-    // Background, with its attributes and fade-in animation
-    //CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
-    //background.position = ccp(winSize.width/2,winSize.height/2);
-	//background.scale = 0.5;
-    //[self addChild:background];
-    
-
     //-----------------------------------------------------------------------------------------------------------------------------------
-    // Background Particles
+    // Background, with its attributes
+    CCSprite* background = [CCSprite spriteWithImageNamed:@"Background2.png"];
+    background.position = ccp(winSize.width/2,winSize.height/2);
+	background.scale = 0.9;
+    //background.opacity = 0.5;
     
-    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
-    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
-    [self addChild:particlesSingularity];
+    id backgroundRotate = [CCActionRotateBy actionWithDuration:60 angle:360];
+    id repeatBackgroundRotate = [CCActionRepeatForever actionWithAction:backgroundRotate];
+    
+    [background runAction:repeatBackgroundRotate];
+    [self addChild:background];
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
     // Grid sprite, and its rotation
 	
     CCSprite* grid = [CCSprite spriteWithImageNamed:@"grid.png"];
-    CCSpriteWaveGenerator* gridWave = [[CCSpriteWaveGenerator alloc] initWithCCSprite:grid];
+    //CCSpriteWaveGenerator* gridWave = [[CCSpriteWaveGenerator alloc] initWithCCSprite:grid];
     
-    CCSprite* rippledGrid = gridWave.rippledSprite;
+    //CCSprite* rippledGrid = gridWave.rippledSprite;
     //rippledGrid.position = ccp(winSize.width/2,winSize.height/2);
     grid.position = ccp(winSize.width/2,winSize.height/2);
 	grid.scale = 0.8;
-	grid.opacity = 0.3;
-    [self addChild:rippledGrid];
+	grid.opacity = 0.6;
+    [self addChild:grid];
     
     
-    
-	//id gridRotate = [CCActionRotateBy actionWithDuration:20 angle:-360];
-	//id repeatAction = [CCActionRepeatForever actionWithAction:gridRotate];
+	id gridRotate = [CCActionRotateBy actionWithDuration:20 angle:360];
+	id repeatAction = [CCActionRepeatForever actionWithAction:gridRotate];
 	
-	//[grid runAction:repeatAction];
+	[grid runAction:repeatAction];
+    
+    
+    //-----------------------------------------------------------------------------------------------------------------------------------
+    // Background Particles
+    
+    CCParticleSystem *particlesSingularity = [CCParticleSystem particleWithFile:@"BlackHole-SingularityWars.plist"];
+    particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:particlesSingularity];
     
     
 	//-----------------------------------------------------------------------------------------------------------------------------------

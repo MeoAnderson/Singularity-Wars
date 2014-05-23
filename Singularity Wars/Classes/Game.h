@@ -16,15 +16,25 @@
 #import "Options.h"
 #import "Pause.h"
 #import "SneakyJoystick.h"
+#import "SneakyJoystickSkinnedBase.h"
+#import "SneakyInput_0_4_0AppDelegate.h"
 #import "SneakyJoystickSkinnedJoystickExample.h"
-#import "ColoredCircleSprite.h"
-#import "ZJoystick.h"
+#import "SneakyButtonSkinnedBase.h"
+#import "SneakyButton.h"
 
 
 @interface Game : CCScene
+
+{
+    
+    CCSprite* myShip;
+    SneakyJoystickSkinnedBase* leftJoystick;
+    
+    SneakyJoystickSkinnedBase* rightJoystick;
+    
+}
 
 + (Game *)scene;
 - (id)init;
 
 @end
-
