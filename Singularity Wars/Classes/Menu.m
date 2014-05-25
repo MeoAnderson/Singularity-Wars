@@ -17,15 +17,7 @@
 #import "HowToPlay.h"
 #import <UIKit/UIKit.h>
 
-/*
-@implementation RipplesLayer : CCNode  {
 
-    CCSpriteWaveGenerator* rippledGrid;
-
-}
-
-@end
-*/
 @implementation Menu
 
 + (Menu *)scene
@@ -33,7 +25,6 @@
 
     return [[self alloc] init];
 }
-
 
 - (id)init
 {
@@ -55,7 +46,10 @@
     
     //-----------------------------------------------------------------------------------------------------------------------------------
     // Background, with its attributes
-    CCSprite* background = [CCSprite spriteWithImageNamed:@"Background2.png"];
+    CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
+    CCSpriteWaveGenerator* swg = [[CCSpriteWaveGenerator alloc] initWithCCSprite:background];
+    CCSprite *rippledSprite = swg.rippledSprite;
+
     background.position = ccp(winSize.width/2,winSize.height/2);
 	background.scale = 0.9;
     //background.opacity = 0.5;
@@ -65,16 +59,19 @@
     
     [background runAction:repeatBackgroundRotate];
     [self addChild:background];
+    [self addChild:rippledSprite];
+    
+    CGPoint rippleOrigin = CGPointMake(500,500);
+    [swg createWaveAt:rippleOrigin];
+
+    CGPoint origin = [swg.rippledSprite convertToNodeSpace:ccp(500,500)];
+    [swg createWaveAt:CGPointMake(origin.x,origin.y)];
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
     // Grid sprite, and its rotation
 	
     CCSprite* grid = [CCSprite spriteWithImageNamed:@"grid.png"];
-    //CCSpriteWaveGenerator* gridWave = [[CCSpriteWaveGenerator alloc] initWithCCSprite:grid];
-    
-    //CCSprite* rippledGrid = gridWave.rippledSprite;
-    //rippledGrid.position = ccp(winSize.width/2,winSize.height/2);
     grid.position = ccp(winSize.width/2,winSize.height/2);
 	grid.scale = 0.8;
 	grid.opacity = 0.6;
@@ -107,16 +104,15 @@
 	title.shadowOffset = ccp(1,1);
     title.position = ccp(winSize.width/2,winSize.height-100);
     [self addChild:title];
-   
-	// Animation for the Title text
 	
+    // Animation for the Title text
+    
 	id titleFadeOut = [CCActionFadeOut actionWithDuration:2];
     id titleFadeIn = [CCActionFadeIn actionWithDuration:2];
 	id actionTitle = [CCActionSequence actionOne:titleFadeOut two:titleFadeIn];
 	id repeatActionTitle = [CCActionRepeatForever actionWithAction:actionTitle];
     
 	[title runAction:repeatActionTitle];
-	
 	
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	// Buttons
@@ -229,5 +225,10 @@
     [[CCDirector sharedDirector] pushScene:[Credits scene]];
 	[[OALSimpleAudio sharedInstance] playEffect:@"otherButton2_sfx.mp3"];
 }
-
+/*
+- (void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event{
+    CGPoint origin = [swg.rippledSprite convertTouchToNodeSpace:touch];
+    [swg createWaveAt:CGPointMake(origin.x,origin.y)];
+}
+*/
 @end

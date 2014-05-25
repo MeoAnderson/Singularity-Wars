@@ -12,6 +12,7 @@
 
 #import "cocos2d.h"
 #import "cocos2d-ui.h"
+#import <UIKit/UIPinchGestureRecognizer.h>
 #import "Menu.h"
 #import "Options.h"
 #import "Pause.h"
@@ -27,10 +28,10 @@
 
 {
     
-    CCSprite* myShip;
-    SneakyJoystickSkinnedBase* leftJoystick;
+    CCSprite* Ship;
+    SneakyJoystick* leftJoystick;
     
-    SneakyJoystickSkinnedBase* rightJoystick;
+    SneakyJoystick* rightJoystick;
     
 }
 

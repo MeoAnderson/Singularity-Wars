@@ -12,7 +12,7 @@
 
 
 //TAREFAS PARA HOJE 22/05/14
-//Joysticks!!
+//Joysticks!! - UPDATE: ehr... meio atingido
 //Colisões!!
 
 
@@ -26,7 +26,6 @@
 	return [[self alloc] init];
 }
 
-
 - (void) initJoystick {
     
     
@@ -39,7 +38,7 @@
     
     [self addChild:joystickBase];
     leftJoystick = joystickBase.joystick;
-    
+      
 }
 
 - (void) initJoystickShooting {
@@ -53,17 +52,39 @@
     
     [self addChild:rightJoystickBase];
     rightJoystick = rightJoystickBase.joystick;
-    
 }
-/*
-- (void) update:(CCTime)deltaTime {
-    
+
+-(void) update:(CCTime) deltaTime {
     CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 240);
-    CGPoint newPosition = ccp(myShip.position.x + scaledVelocity.x * delta, myShip.position.y + scaledVelocity.y *delta);
-    [myShip setPosition:newPosition];
+    CGPoint newPosition = ccp(Ship.position.x + scaledVelocity.x * deltaTime, Ship.position.y + scaledVelocity.y * deltaTime);
     
+    if (newPosition.y>320) {
+        newPosition.y=newPosition.y-320;
+    }
+    if (newPosition.y<0) {
+        newPosition.y=newPosition.y+320;
+    }
+    
+    if (newPosition.x>480) {
+        newPosition.x=newPosition.x-480;
+    }
+    if (newPosition.x<0) {
+        newPosition.x=newPosition.x+480;
+    }
+    
+     //new
+     if (rightJoystick.isExclusiveTouch == YES) {
+     CCSprite* laser=[CCSprite spriteWithImageNamed:@"shoot.png"];
+     laser.position=ccp(Ship.position.x+10,Ship.position.y-25);
+     [self addChild:laser];
+     id move=[CCActionMoveBy actionWithDuration:1.0 position:ccp(500,0)];
+     [laser runAction:move];
+     [[OALSimpleAudio sharedInstance] playEffect:@"laser_shoot.mp3" loop:NO];
+     
+     }
+    
+    [Ship setPosition:newPosition];
 }
-*/
 
 - (id)init
 {
@@ -78,7 +99,7 @@
      self.userInteractionEnabled = YES;
      self.multipleTouchEnabled = YES;
     
-     [self initJoystick];
+     //[self initJoystick];
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
@@ -113,16 +134,16 @@
     [self addChild:grid];
 
     //-----------------------------------------------------------------------------------------------------------------------------------
-    
     //Character sprites, animation & other atributes
     
     
     //My ship
-    CCSprite* myShip = [CCSprite spriteWithImageNamed:@"ship.png"];
-    myShip.position = ccp(winSize.width/2,winSize.height/2);
-    [self addChild:myShip];
+    CCSprite* Ship = [CCSprite spriteWithImageNamed:@"ship.png"];
+    Ship.position = ccp(winSize.width/2,winSize.height/2);
+    [self addChild:Ship];
 
     
+    //Amanhã 
     //-----------------------------------------------------------------------------------------------------------------------------------
     
     // Ghost Enemy (Sprite creation, positioning off-screen, etc TBD)
@@ -162,7 +183,7 @@
     
     [self addChild:enemy];
     
-    /*
+/*
      int minY = enemy.contentSize.height / 2;
      int maxY = self.contentSize.height - enemy.contentSize.height / 2;
      int rangeY = maxY - minY;
@@ -181,7 +202,7 @@
     
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
     CCAction *actionRemove = [CCActionRemove action];
-    */
+*/
     //-----------------------------------------------------------------------------------------------------------------------------------
     
     
@@ -234,23 +255,24 @@
     
     CCButton* pauseButton = [CCButton buttonWithTitle:@"Pause" fontName:@"technoid" fontSize:30];
     pauseButton.color = [CCColor whiteColor];
-    pauseButton.position = ccp(900,700);
+    pauseButton.position = ccp(900,750);
     [pauseButton setTarget:self selector:@selector(onPauseClicked:)];
     [self addChild:pauseButton];
 
     //-----------------------------------------------------------------------------------------------------------------------------------
     
     // Background music for game
+    
     [[OALSimpleAudio sharedInstance] playBg:@"game.m4a" loop:YES];
 
     [self initJoystick];
     [self initJoystickShooting];
     
+    
      // done
 	return self;
-     
+    
 }
-
 
 - (void)onPauseClicked:(id)sender
 {

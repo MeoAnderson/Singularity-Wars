@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C61104FC19310155002C967C /* shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = C61104FB19310155002C967C /* shoot.png */; };
+		C61104FE19310635002C967C /* laser_shoot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61104FD19310635002C967C /* laser_shoot.mp3 */; };
 		C61BA65418D9C80B0001613B /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C61BA65318D9C80B0001613B /* Default~ipad.png */; };
 		C62E0258192BFDF90019A471 /* ColoredCircleSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0245192BFDF90019A471 /* ColoredCircleSprite.m */; };
 		C62E0259192BFDF90019A471 /* ColoredSquareSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0247192BFDF90019A471 /* ColoredSquareSprite.m */; };
@@ -271,6 +273,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C61104FB19310155002C967C /* shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shoot.png; sourceTree = "<group>"; };
+		C61104FD19310635002C967C /* laser_shoot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laser_shoot.mp3; sourceTree = "<group>"; };
 		C61BA65318D9C80B0001613B /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad.png"; path = "Singularity Wars/Assets Singularity Wars/Backgrounds/Default~ipad.png"; sourceTree = SOURCE_ROOT; };
 		C62E0244192BFDF90019A471 /* ColoredCircleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredCircleSprite.h; sourceTree = "<group>"; };
 		C62E0245192BFDF90019A471 /* ColoredCircleSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredCircleSprite.m; sourceTree = "<group>"; };
@@ -1808,6 +1812,7 @@
 		C6B7FC7618D8C0F000FB19F4 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				C61104FD19310635002C967C /* laser_shoot.mp3 */,
 				C6B7FC7718D8C0F000FB19F4 /* otherButton2_sfx.mp3 */,
 				C6B7FC7818D8C0F000FB19F4 /* otherButton_sfx.mp3 */,
 				C6B7FC7918D8C0F000FB19F4 /* startButton2_sfx.mp3 */,
@@ -1819,6 +1824,7 @@
 		C6B7FC7B18D8C0F000FB19F4 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				C61104FB19310155002C967C /* shoot.png */,
 				C6B7FCB418D8C67000FB19F4 /* fire.png */,
 				C6B7FC7C18D8C0F000FB19F4 /* particle.png */,
 			);
@@ -1927,6 +1933,7 @@
 				C6B7F9D718D8BB8500FB19F4 /* Icon-Small@2x.png in Resources */,
 				C6B7FC8D18D8C0F000FB19F4 /* logo_appicon2.png in Resources */,
 				C6B7FC9918D8C0F000FB19F4 /* pause.png in Resources */,
+				C61104FC19310155002C967C /* shoot.png in Resources */,
 				C6B7FC9018D8C0F000FB19F4 /* testeShip2.png in Resources */,
 				C6B7FC9218D8C0F000FB19F4 /* menu.mp3 in Resources */,
 				C6B7F9C918D8BB8500FB19F4 /* Icon-72@2x.png in Resources */,
@@ -1962,6 +1969,7 @@
 				C6B7FC8118D8C0F000FB19F4 /* Background2.png in Resources */,
 				C6B7FCB518D8C67000FB19F4 /* fire.png in Resources */,
 				C6B7F9DB18D8BB8500FB19F4 /* Icon-Spotlight-iOS7@2x.png in Resources */,
+				C61104FE19310635002C967C /* laser_shoot.mp3 in Resources */,
 				C62E026A192C07AB0019A471 /* heightfield_frag_shader.fsh in Resources */,
 				C6B7FC8B18D8C0F000FB19F4 /* appicon.png in Resources */,
 				C6B7F9CB18D8BB8500FB19F4 /* Icon-76.png in Resources */,
