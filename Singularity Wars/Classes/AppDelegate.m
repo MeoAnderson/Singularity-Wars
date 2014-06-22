@@ -41,9 +41,11 @@
 		// Run at a reduced framerate.
 //		CCSetupAnimationInterval: @(1.0/30.0),
 		// Run the fixed timestep extra fast.
-//		CCSetupFixedUpdateInterval: @(1.0/180.0),
+        CCSetupFixedUpdateInterval: @(1.0/180.0),
 		// Make iPad's act like they run at a 2x content scale. (iPad retina 4x)
-//		CCSetupTabletScale2X: @(YES),
+		//CCSetupTabletScale2X: @(YES),
+        CCSetupMultiSampling: @(YES),
+        CCSetupNumberOfSamples: @(4)
 	}];
 	
 	return YES;

@@ -26,6 +26,7 @@
     return [[self alloc] init];
 }
 
+
 - (id)init
 {
     // Apple recommend assigning self with supers return value
@@ -47,41 +48,32 @@
     //-----------------------------------------------------------------------------------------------------------------------------------
     // Background, with its attributes
     CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
-    CCSpriteWaveGenerator* swg = [[CCSpriteWaveGenerator alloc] initWithCCSprite:background];
-    CCSprite *rippledSprite = swg.rippledSprite;
-
+    
     background.position = ccp(winSize.width/2,winSize.height/2);
 	background.scale = 0.9;
-    //background.opacity = 0.5;
     
     id backgroundRotate = [CCActionRotateBy actionWithDuration:60 angle:360];
     id repeatBackgroundRotate = [CCActionRepeatForever actionWithAction:backgroundRotate];
     
     [background runAction:repeatBackgroundRotate];
-    [self addChild:background];
-    [self addChild:rippledSprite];
     
-    CGPoint rippleOrigin = CGPointMake(500,500);
-    [swg createWaveAt:rippleOrigin];
-
-    CGPoint origin = [swg.rippledSprite convertToNodeSpace:ccp(500,500)];
-    [swg createWaveAt:CGPointMake(origin.x,origin.y)];
+    [self addChild:background];
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
-    // Grid sprite, and its rotation
+    // Grid sprite and its rotation
 	
     CCSprite* grid = [CCSprite spriteWithImageNamed:@"grid.png"];
     grid.position = ccp(winSize.width/2,winSize.height/2);
 	grid.scale = 0.8;
-	grid.opacity = 0.6;
-    [self addChild:grid];
+	grid.opacity = 0.5;
     
-    
-	id gridRotate = [CCActionRotateBy actionWithDuration:20 angle:360];
+    id gridRotate = [CCActionRotateBy actionWithDuration:20 angle:360];
 	id repeatAction = [CCActionRepeatForever actionWithAction:gridRotate];
-	
-	[grid runAction:repeatAction];
+    
+    [grid runAction:repeatAction];
+
+    [self addChild:grid];
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
@@ -93,7 +85,7 @@
     
     
 	//-----------------------------------------------------------------------------------------------------------------------------------
-	//Title text
+	// Title text
 	
     // "Singularity Wars" title, with its attributes
     CCLabelTTF* title = [CCLabelTTF labelWithString:@"Singularity Wars" fontName:@"technoid" fontSize:80];
@@ -114,6 +106,7 @@
     
 	[title runAction:repeatActionTitle];
 	
+    
 	//-----------------------------------------------------------------------------------------------------------------------------------
 	// Buttons
 	

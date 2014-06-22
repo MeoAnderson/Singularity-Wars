@@ -24,10 +24,16 @@
 #import "SneakyButton.h"
 
 
+
 @interface Game : CCScene
 
 {
     
+    //Timer
+    CCLabelTTF* lblTime;
+    float TimeInSec;
+    
+    // Joysticks
     CCSprite* Ship;
     SneakyJoystick* leftJoystick;
     

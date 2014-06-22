@@ -920,6 +920,7 @@
 		C6B7F9E118D8BB8600FB19F4 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				C6D3EA4E1933AC92001CD25F /* ZJoystick */,
 				C62E0262192C07890019A471 /* WaveGenerator */,
 				C62E0243192BFDD40019A471 /* SneakyInput */,
 				C6B7FC5818D8C07A00FB19F4 /* Licenses */,
@@ -1838,6 +1839,13 @@
 				C6B7FC7F18D8C0F000FB19F4 /* testJoystiq.png */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		C6D3EA4E1933AC92001CD25F /* ZJoystick */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ZJoystick;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

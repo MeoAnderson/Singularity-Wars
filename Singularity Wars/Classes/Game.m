@@ -11,13 +11,12 @@
 // -----------------------------------------------------------------------
 
 
-//TAREFAS PARA HOJE 22/05/14
-//Joysticks!! - UPDATE: ehr... meio atingido
+//TAREFAS PARA HOJE 22/06/14
+//Joysticks!! - UPDATE: vamos lá meter esta merda a trabalhar
 //Colisões!!
 
 
 #import "Game.h"
-
 
 @implementation Game
 
@@ -26,71 +25,71 @@
 	return [[self alloc] init];
 }
 
+// Create Joystick for Movement
+
 - (void) initJoystick {
     
+    SneakyJoystickSkinnedBase* leftJoy = [[SneakyJoystickSkinnedBase alloc] init];
+    leftJoy.backgroundSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    leftJoy.thumbSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    leftJoy.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, 200, 200)];
+    leftJoy.position = ccp(150,150);
+    leftJoy.scale = 0.6;
     
-    SneakyJoystickSkinnedBase* joystickBase = [[SneakyJoystickSkinnedBase alloc] init];
-    joystickBase.backgroundSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
-    joystickBase.thumbSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
-    joystickBase.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, 200, 200)];
-    joystickBase.position = ccp(150,150);
-    joystickBase.scale = 0.5;
+    leftJoystick = leftJoy.joystick;
+    [self addChild:leftJoy];
     
-    [self addChild:joystickBase];
-    leftJoystick = joystickBase.joystick;
-      
 }
+
+// Create Joystick for shooting
 
 - (void) initJoystickShooting {
     
-    SneakyJoystickSkinnedBase* rightJoystickBase = [[SneakyJoystickSkinnedBase alloc] init];
-    rightJoystickBase.backgroundSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
-    rightJoystickBase.thumbSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
-    rightJoystickBase.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, 200, 200)];
-    rightJoystickBase.position = ccp(875,150);
-    rightJoystickBase.scale = 0.5;
-    
-    [self addChild:rightJoystickBase];
-    rightJoystick = rightJoystickBase.joystick;
-}
+    SneakyJoystickSkinnedBase* rightJoy = [[SneakyJoystickSkinnedBase alloc] init];
+    rightJoy.backgroundSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    rightJoy.thumbSprite = [CCSprite spriteWithImageNamed:@"testJoystiq.png"];
+    rightJoy.joystick = [[SneakyJoystick alloc] initWithRect:CGRectMake(0, 0, 200, 200)];
+    rightJoy.position = ccp(875,150);
+    rightJoy.scale = 0.6;
 
--(void) update:(CCTime) deltaTime {
-    CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 240);
-    CGPoint newPosition = ccp(Ship.position.x + scaledVelocity.x * deltaTime, Ship.position.y + scaledVelocity.y * deltaTime);
+    rightJoystick = rightJoy.joystick;
+    [self addChild:rightJoy];
     
-    if (newPosition.y>320) {
-        newPosition.y=newPosition.y-320;
     }
-    if (newPosition.y<0) {
-        newPosition.y=newPosition.y+320;
-    }
-    
-    if (newPosition.x>480) {
-        newPosition.x=newPosition.x-480;
-    }
-    if (newPosition.x<0) {
-        newPosition.x=newPosition.x+480;
-    }
-    
-     //new
-     if (rightJoystick.isExclusiveTouch == YES) {
-     CCSprite* laser=[CCSprite spriteWithImageNamed:@"shoot.png"];
-     laser.position=ccp(Ship.position.x+10,Ship.position.y-25);
-     [self addChild:laser];
-     id move=[CCActionMoveBy actionWithDuration:1.0 position:ccp(500,0)];
-     [laser runAction:move];
-     [[OALSimpleAudio sharedInstance] playEffect:@"laser_shoot.mp3" loop:NO];
+
+// Update callback for every frame, responsible for updating the position of the ship as well as the shooting
+
+ -(void) update:(CCTime)deltaTime {
      
+     CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 240);
+     CGPoint newPosition = ccp(Ship.position.x + scaledVelocity.x * deltaTime, Ship.position.y + scaledVelocity.y * deltaTime);
+ 
+     if (newPosition.y>320) {
+         newPosition.y=newPosition.y-320;
      }
-    
-    [Ship setPosition:newPosition];
-}
+     if (newPosition.y<320) {
+         newPosition.y=newPosition.y+320;
+     }
+ 
+     if (newPosition.x>480) {
+         newPosition.x=newPosition.x-480;
+     }
+     if (newPosition.x<480) {
+         newPosition.x=newPosition.x+480;
+ 
+         [Ship setPosition:newPosition];
+        
+    }
+ }
+
+
 
 - (id)init
 {
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
+    
     
     // Get the size of the window
 	CGSize winSize = [CCDirector sharedDirector].viewSize;
@@ -99,18 +98,13 @@
      self.userInteractionEnabled = YES;
      self.multipleTouchEnabled = YES;
     
-     //[self initJoystick];
-    
-    
+  
     //-----------------------------------------------------------------------------------------------------------------------------------
-    
-    // Gameplay timer - TBD
-
-    //-----------------------------------------------------------------------------------------------------------------------------------
-
     // Sprite with background
+    
     CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
     [self addChild:background];
+   
     
     //-----------------------------------------------------------------------------------------------------------------------------------
     // Background Particles
@@ -119,8 +113,8 @@
     particlesSingularity.position = ccp(winSize.width/2,winSize.height/2);
     [self addChild:particlesSingularity];
     
-    //-----------------------------------------------------------------------------------------------------------------------------------
     
+    //-----------------------------------------------------------------------------------------------------------------------------------
     // Grid sprite
     
     CCSprite* grid = [CCSprite spriteWithImageNamed:@"grid.png"];
@@ -132,6 +126,7 @@
     id repeatMoveGrid = [CCActionRepeatForever actionWithAction:rotateGrid];
     [grid runAction:repeatMoveGrid];
     [self addChild:grid];
+    
 
     //-----------------------------------------------------------------------------------------------------------------------------------
     //Character sprites, animation & other atributes
@@ -141,16 +136,17 @@
     CCSprite* Ship = [CCSprite spriteWithImageNamed:@"ship.png"];
     Ship.position = ccp(winSize.width/2,winSize.height/2);
     [self addChild:Ship];
-
     
-    //Amanhã 
+    
+    
     //-----------------------------------------------------------------------------------------------------------------------------------
-    
     // Ghost Enemy (Sprite creation, positioning off-screen, etc TBD)
     
-    CCSprite* enemy = [CCSprite spriteWithImageNamed:@"enemy.png"];
-    //enemy.position = ccp(800,500);
     
+    CCSprite* enemy = [CCSprite spriteWithImageNamed:@"enemy.png"];
+    enemy.position = ccp(800,500);
+    
+    /*
     int minY = enemy.contentSize.height / 2;// Variable for size
     int maxY = self.contentSize.height - enemy.contentSize.height / 2;
     int rangeY = maxY - minY;
@@ -166,7 +162,7 @@
     CCAction *actionRemove = [CCActionRemove action];
     
     [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
-
+     */
 
     // Para aplicar fade in e out ao Ghost
     id enemyFadeOut = [CCActionFadeOut actionWithDuration:0.5];
@@ -176,57 +172,47 @@
     [enemy runAction:repeatEnemyFadeOutIn];
     
     // Para mover
-    id moveEnemyToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(0,0)];
-    [enemy runAction:moveEnemyToShipLocation];
+    //id moveEnemyToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(0,0)];
+    //[enemy runAction:moveEnemyToShipLocation];
     
     
     
     [self addChild:enemy];
     
 /*
-     int minY = enemy.contentSize.height / 2;
-     int maxY = self.contentSize.height - enemy.contentSize.height / 2;
-     int rangeY = maxY - minY;
-     int randomY = (arc4random() % rangeY) + minY;
-     
-     
-     enemy.position = CGPointMake(self.contentSize.width + enemy.contentSize.width/2, randomY);
-     
-     int minDuration = 2.0;
-     int maxDuration = 4.0;
-     int rangeDuration = maxDuration - minDuration;
-     int randomDuration = (arc4random() % rangeDuration) + minDuration;
-    
-    
-    [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
-    
     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
     CCAction *actionRemove = [CCActionRemove action];
 */
+    
+    
     //-----------------------------------------------------------------------------------------------------------------------------------
-    
-    
     // Enemy 2
     CCSprite* enemy2 = [CCSprite spriteWithImageNamed:@"enemy2.png"];
     enemy2.position = ccp(200,200);
     
     id enemy2Rotation = [CCActionRotateBy actionWithDuration:2 angle:360];
     id repeatEnemy2Rotation = [CCActionRepeatForever actionWithAction:enemy2Rotation];
+    
     [enemy2 runAction:repeatEnemy2Rotation];
     [self addChild:enemy2];
+    
+    
     
     // Enemy 3
     CCSprite* enemy3 = [CCSprite spriteWithImageNamed:@"enemy3.png"];
     enemy3.position = ccp(400,400);
     enemy3.scale = 0.7;
+    
     id enemy3Rotation = [CCActionRotateBy actionWithDuration:1 angle:-360];
     id repeatEnemy3Rotation = [CCActionRepeatForever actionWithAction:enemy3Rotation];
+    
+    
     [enemy3 runAction:repeatEnemy3Rotation];
     [self addChild:enemy3];
 
     //-----------------------------------------------------------------------------------------------------------------------------------
-    
     // Labels
+    
     
     // The "time elapsed" label
     CCLabelTTF* timeElapsed = [CCLabelTTF labelWithString:@"Time Elapsed: " fontName:@"technoid" fontSize:30];
@@ -281,6 +267,5 @@
     [[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
 	
 }
-
 
 @end
