@@ -19,6 +19,18 @@
 // 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    
+    UILocalNotification* notifications = [[UILocalNotification alloc]init];
+    
+    notifications.alertAction = @"Singularity Wars";
+    notifications.alertBody = @"Feeling stressed? Come shoot some bad guys!";
+    notifications.fireDate = [NSDate dateWithTimeIntervalSinceNow:5];
+    
+    [application setScheduledLocalNotifications:[NSArray arrayWithObject:notifications]];
+    
+    
+    
 	// This is the only app delegate method you need to implement when inheriting from CCAppDelegate.
 	// This method is a good place to add one time setup code that only runs when your app is first launched.
 	
