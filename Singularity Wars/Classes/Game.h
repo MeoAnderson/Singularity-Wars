@@ -29,7 +29,7 @@
 
 {
     
-    //Timer
+    // Timer TBD
     CCLabelTTF* lblTime;
     float TimeInSec;
     
