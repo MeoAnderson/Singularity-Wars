@@ -25,6 +25,8 @@
 
 
 
+
+
 @interface Game : CCScene
 
 {
@@ -39,6 +41,15 @@
     
     SneakyJoystick* rightJoystick;
     
+    // Collision
+    BOOL isCollision;
+    
+    // Ship lifes
+    int lifes;
+    
+    // Enemy
+    CGRect ghost;
+
 }
 
 + (Game *)scene;

@@ -68,10 +68,18 @@
     [self addChild:resumeButton];
     
     
+    // "Restart Game" button
+    CCButton *restartButton = [CCButton buttonWithTitle:@"Restart Game" fontName:@"technoid" fontSize:45];
+    restartButton.position = ccp(winSize.width/2,winSize.height/3);
+    [restartButton setTarget:self selector:@selector(onRestartGameClicked:)];
+    [self addChild:restartButton];
+
+    
+    
     // "Back to Main Menu" button
     
     CCButton *backMainMenuButton = [CCButton buttonWithTitle:@"Back to Main Menu" fontName:@"technoid" fontSize:45];
-    backMainMenuButton.position = ccp(winSize.width/2,winSize.height/3);
+    backMainMenuButton.position = ccp(winSize.width/2,winSize.height/4);
     [backMainMenuButton setTarget:self selector:@selector(onBackMainMenuClicked:)];
     [self addChild:backMainMenuButton];
     
@@ -86,6 +94,13 @@
     // Resume the game
     [[CCDirector sharedDirector] popSceneWithTransition:[CCTransition transitionCrossFadeWithDuration:0.4]];
     [[OALSimpleAudio sharedInstance] playEffect:@"otherButton2_sfx.mp3"];
+}
+
+- (void)onRestartGameClicked:(id)sender
+{
+    // Restart the game
+    [[CCDirector sharedDirector] pushScene:[Game scene] withTransition:[CCTransition transitionFadeWithDuration:0.4]];
+    [[OALSimpleAudio sharedInstance] playEffect:@"Button2_sfx.mp3"];
 }
 
 - (void)onBackMainMenuClicked:(id)sender

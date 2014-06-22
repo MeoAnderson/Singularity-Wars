@@ -13,7 +13,6 @@
 #import "AppDelegate.h"
 #import "Menu.h"
 
-
 @implementation AppDelegate
 
 // 
@@ -56,8 +55,8 @@
         CCSetupFixedUpdateInterval: @(1.0/180.0),
 		// Make iPad's act like they run at a 2x content scale. (iPad retina 4x)
 		//CCSetupTabletScale2X: @(YES),
-        CCSetupMultiSampling: @(YES),
-        CCSetupNumberOfSamples: @(4)
+        //CCSetupMultiSampling: @(YES),
+        //CCSetupNumberOfSamples: @(4)
 	}];
 	
 	return YES;

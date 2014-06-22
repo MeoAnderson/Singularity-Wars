@@ -19,6 +19,7 @@
 
 #import "Game.h"
 
+
 @implementation Game
 
 + (Game *)scene
@@ -94,24 +95,12 @@
     [self addChild:rightJoy];
     
     }
-/*
-- (void) myShip {
-    
-    // Get the size of the window so we can put the ship at the center of the screen
-    
-	CGSize winSize = [CCDirector sharedDirector].viewSize;
-    
-    CCSprite* Ship = [CCSprite spriteWithImageNamed:@"ship.png"];
-    Ship.position = ccp(winSize.width/2,winSize.height/2);
-    [self addChild:Ship];
-    
-}
-*/
+
+
 - (void) initEnemies {
     
     CCSprite* ghost = [CCSprite spriteWithImageNamed:@"enemy.png"];
     ghost.position = ccp(800,500);
-    
     /*
      int minY = enemy.contentSize.height / 2;// Variable for size
      int maxY = self.contentSize.height - enemy.contentSize.height / 2;
@@ -181,6 +170,10 @@
     
     //TO BE RESEARCHED
     
+    //CCPhysicsBody* physicsMyShip = [[CCPhysicsBody alloc]init];
+
+   // physicsMyShip.affectedByGravity = NO;
+   // physicsMyShip.
 }
 
 
@@ -227,56 +220,72 @@
     [[OALSimpleAudio sharedInstance] playBg:@"game.m4a" loop:YES];
 }
 
+/*
+-(void)shootWithRightJoystick { //called in tick method
+    if (rightJoystick.velocity.x != 0 && rightJoystick.velocity.y != 0) {
+        CCSprite* laser = [CCSprite spriteWithImageNamed:@"fire.png"];
+        laser.position = Ship.position;
+        [self addChild:laser z:10];
+        CGPoint velocity = rightJoystick.velocity;
+        CCLOG(@"%.5f //// %.5f",velocity.x,velocity.y);
+        velocity = ccpMult(ccpNormalize(velocity), 1000);
+        [laser runAction:[CCActionMoveBy actionWithDuration:3 position:velocity]];
+    }
+}
+*/
 // Update callback for every frame, responsible for updating the position of the ship as well as the shooting
 
  -(void) update:(CCTime)deltaTime {
      
+     // Logic for updating the position of the ship at each frame
+     
      CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 400);
      CGPoint newPosition = ccp(Ship.position.x + scaledVelocity.x * deltaTime, Ship.position.y + scaledVelocity.y * deltaTime);
-     /*
-     if (newPosition.y>320) {
-         newPosition.y=newPosition.y-320;
-     }
-     if (newPosition.y<320) {
-         newPosition.y=newPosition.y+320;
-     }
- 
-     if (newPosition.x>480) {
-         newPosition.x=newPosition.x-480;
-     }
-     if (newPosition.x<480) {
-         newPosition.x=newPosition.x+480;
-
-      
-        
-    }
-       */
+     
      [Ship setPosition:newPosition];
+     
+     
+     // Logic for shooting lasers with the right joystick
+     
+     if (rightJoystick.velocity.x != 0 && rightJoystick.velocity.y != 0)
+     
+     {
+         CCSpriteBatchNode* laser = [[CCSpriteBatchNode alloc]initWithFile:@"shoot.png" capacity:10];
+       
+         laser.position = Ship.position;
+         laser.anchorPoint = ccp(0,0);
+         [self addChild:laser z:100];
+         
+         
+         //CGRect laserRect = [laser boundingBox];
+         //CGRect enemyRect = [];
+         
+         
+         CGPoint velocity = rightJoystick.velocity;
+         CCLOG(@"%.5f //// %.5f",velocity.x,velocity.y);
+         velocity = ccpMult(ccpNormalize(velocity), 1000);
+         [laser runAction:[CCActionMoveBy actionWithDuration:1 position:velocity]];
+     }
+     
+
  }
-
-
-
-
-
 
 - (id)init
 {
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
-
     
      self.userInteractionEnabled = YES;
      self.multipleTouchEnabled = YES;
     
     CGSize winSize = [CCDirector sharedDirector].viewSize;
-    
+     
     Ship = [CCSprite spriteWithImageNamed:@"ship.png"];
     Ship.position = ccp(winSize.width/2,winSize.height/2);
-    
-    
-    
-    
+
+   
+    // Calling in all previously defined functions
     
     [self background];
     [self particles];
@@ -289,6 +298,10 @@
     [self initJoystick];
     [self initJoystickShooting];
     
+    // Lifes logic
+    
+    lifes = 3;
+        
 
     
      // done
