@@ -13,8 +13,8 @@
 
 //TAREFAS PARA HOJE 22/06/14
 //Joysticks!! - DONE
-//Colisões!! - Vamo lá
-//Cleanup!!
+//Colisões!! - DONE
+//Cleanup!! -TDB
 
 
 #import "Game.h"
@@ -216,16 +216,7 @@
 
 - (void) labels {
     
-    // The "time elapsed" label
-    CCLabelTTF* lifes = [CCLabelTTF labelWithString:@"Lifes: " fontName:@"technoid" fontSize:30];
-	
-	lifes.outlineColor = [CCColor blackColor];
-	lifes.outlineWidth = 1;
-	lifes.shadowColor = [CCColor blackColor];
-	lifes.shadowOffset = ccp(1,1);
-    lifes.position = ccp(150,750);
-    [self addChild:lifes];
-    
+
     
     
     //-----------------------------------------------------------------------------------------------------------------------------------
@@ -243,7 +234,7 @@
 
 - (void) GameOver {
     
-    
+    [[CCDirector sharedDirector] pushScene:[GameOver scene]];
     
     
 }
@@ -265,6 +256,17 @@
 
  -(void) update:(CCTime)deltaTime {
    
+     
+     
+     CGSize winSize = [CCDirector sharedDirector].viewSize;
+     
+     
+     // "Lifes" Label, updated everytime the player loses a life
+     
+     [lifesLbl setString:[NSString stringWithFormat:@"Lifes: %i",lifes]];
+     
+     
+     
      // Logic for updating the position of the ship at each frame
      
      CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 400);
@@ -275,13 +277,10 @@
      
      
      // Logic for shooting lasers with the right joystick
-     
-     
+    
      if (rightJoystick.velocity.x != 0 && rightJoystick.velocity.y != 0)
      
      {
-
-         
          
          CGPoint velocity = rightJoystick.velocity;
          CCLOG(@"%.5f //// %.5f",velocity.x,velocity.y);
@@ -300,22 +299,37 @@
      //Detect collisions between Ship and Enemy
      
      if (CGRectIntersectsRect(ghost.boundingBox, Ship.boundingBox)) {
-         [[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
+         [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
          ghost.visible = NO;
          Ship.visible = NO;
+         [ghost removeFromParentAndCleanup:YES];
+         [Ship stopAllActions];
+         
+         Ship.visible = YES;
+         Ship.position = ccp(winSize.width/2,winSize.height/2);
          [Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
+         
          lifes--;
+         NSLog(@"You lost a life!");
      }
      
     // Detect collisions between lasers and enemies
     
      if (CGRectIntersectsRect(ghost.boundingBox, laser.boundingBox)) {
-         [[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
+         [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
          ghost.visible = NO;
+         [ghost stopAllActions];
          //laser.visible = YES;
 
      }
 
+     if(lifes <= 0){
+         
+         [Ship stopAllActions];
+         [self GameOver];
+         
+     }
+     
  }
 - (id)init
 {
@@ -335,6 +349,16 @@
     ghost.position = ccp(800,500);
 
     
+    lifes = 3;
+    
+    lifesLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lifes: %i",lifes] fontName:@"technoid" fontSize:30];
+    
+    lifesLbl.outlineColor = [CCColor blackColor];
+    lifesLbl.outlineWidth = 1;
+    lifesLbl.shadowColor = [CCColor blackColor];
+    lifesLbl.shadowOffset = ccp(1,1);
+    lifesLbl.position = ccp(150,750);
+    
     // Calling in all previously defined functions
     
     [self background];
@@ -344,20 +368,13 @@
     [self enemyCork];
     [self collisions];
     [self labels];
+    [self addChild:lifesLbl];
     [self sound];
     [self addChild:Ship];
-    //[self addChild:laser];
     [self addChild:ghost];
     [self initJoystick];
     [self initJoystickShooting];
-    
-    
-    // Lifes logic
-    
-    lifes = 3;
-        
 
-    
      // done
 	return self;
     

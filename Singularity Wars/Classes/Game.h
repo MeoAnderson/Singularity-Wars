@@ -16,6 +16,7 @@
 #import "Menu.h"
 #import "Options.h"
 #import "Pause.h"
+#import "GameOver.h"
 #import "SneakyJoystick.h"
 #import "SneakyJoystickSkinnedBase.h"
 #import "SneakyInput_0_4_0AppDelegate.h"
@@ -31,9 +32,6 @@
 
 {
     
-    // Timer TBD
-    CCLabelTTF* lblTime;
-    float TimeInSec;
     
     // Ship
     CCSprite* Ship;
@@ -55,6 +53,7 @@
     
     // Ship lifes
     int lifes;
+    CCLabelTTF* lifesLbl;
 
     
     // Game Over

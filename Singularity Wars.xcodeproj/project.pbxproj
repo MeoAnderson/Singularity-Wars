@@ -261,6 +261,7 @@
 		C6B7FCB518D8C67000FB19F4 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C6B7FCB418D8C67000FB19F4 /* fire.png */; };
 		C6B952A418DA06420033D224 /* wipeoutfury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C6B952A318DA06420033D224 /* wipeoutfury.mp3 */; };
 		C6B952A718DA0A120033D224 /* HowToPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B952A618DA0A120033D224 /* HowToPlay.m */; };
+		C6E03DE9195884FB00F51361 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C6E03DE8195884FB00F51361 /* explosion.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -768,6 +769,7 @@
 		C6B952A318DA06420033D224 /* wipeoutfury.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wipeoutfury.mp3; sourceTree = "<group>"; };
 		C6B952A518DA0A120033D224 /* HowToPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HowToPlay.h; path = Classes/HowToPlay.h; sourceTree = "<group>"; };
 		C6B952A618DA0A120033D224 /* HowToPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HowToPlay.m; path = Classes/HowToPlay.m; sourceTree = "<group>"; };
+		C6E03DE8195884FB00F51361 /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = explosion.mp3; path = ../../../../../../Downloads/explosion.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1818,6 +1820,7 @@
 		C6B7FC7618D8C0F000FB19F4 /* SFX */ = {
 			isa = PBXGroup;
 			children = (
+				C6E03DE8195884FB00F51361 /* explosion.mp3 */,
 				C61104FD19310635002C967C /* laser_shoot.mp3 */,
 				C6B7FC7718D8C0F000FB19F4 /* otherButton2_sfx.mp3 */,
 				C6B7FC7818D8C0F000FB19F4 /* otherButton_sfx.mp3 */,
@@ -1961,6 +1964,7 @@
 				C6B7FBBC18D8BB8900FB19F4 /* LICENSE_Kazmath.txt in Resources */,
 				C647D202192ABD4D0063B4DB /* enemy3.png in Resources */,
 				C6B7FC8718D8C0F000FB19F4 /* grid.png in Resources */,
+				C6E03DE9195884FB00F51361 /* explosion.mp3 in Resources */,
 				C6B7FC9818D8C0F000FB19F4 /* particle.png in Resources */,
 				C62E026D192C07AB0019A471 /* ripple_vert_shader.vsh in Resources */,
 				C6B7F9C718D8BB8500FB19F4 /* Icon-72.png in Resources */,
