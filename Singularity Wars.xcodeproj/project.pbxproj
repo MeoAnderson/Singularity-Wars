@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C61104FC19310155002C967C /* shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = C61104FB19310155002C967C /* shoot.png */; };
 		C61104FE19310635002C967C /* laser_shoot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61104FD19310635002C967C /* laser_shoot.mp3 */; };
+		C612C7311957B723009C5964 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = C612C7301957B722009C5964 /* GameOver.m */; };
 		C61BA65418D9C80B0001613B /* Default~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C61BA65318D9C80B0001613B /* Default~ipad.png */; };
 		C62E0258192BFDF90019A471 /* ColoredCircleSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0245192BFDF90019A471 /* ColoredCircleSprite.m */; };
 		C62E0259192BFDF90019A471 /* ColoredSquareSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0247192BFDF90019A471 /* ColoredSquareSprite.m */; };
@@ -275,6 +276,8 @@
 /* Begin PBXFileReference section */
 		C61104FB19310155002C967C /* shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shoot.png; sourceTree = "<group>"; };
 		C61104FD19310635002C967C /* laser_shoot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laser_shoot.mp3; sourceTree = "<group>"; };
+		C612C72F1957B722009C5964 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOver.h; path = Classes/GameOver.h; sourceTree = "<group>"; };
+		C612C7301957B722009C5964 /* GameOver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameOver.m; path = Classes/GameOver.m; sourceTree = "<group>"; };
 		C61BA65318D9C80B0001613B /* Default~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~ipad.png"; path = "Singularity Wars/Assets Singularity Wars/Backgrounds/Default~ipad.png"; sourceTree = SOURCE_ROOT; };
 		C62E0244192BFDF90019A471 /* ColoredCircleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColoredCircleSprite.h; sourceTree = "<group>"; };
 		C62E0245192BFDF90019A471 /* ColoredCircleSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColoredCircleSprite.m; sourceTree = "<group>"; };
@@ -1715,6 +1718,8 @@
 				C6B7FCA418D8C0F700FB19F4 /* Options.m */,
 				C6B7FCA518D8C0F700FB19F4 /* Pause.h */,
 				C6B7FCA618D8C0F700FB19F4 /* Pause.m */,
+				C612C72F1957B722009C5964 /* GameOver.h */,
+				C612C7301957B722009C5964 /* GameOver.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2082,6 +2087,7 @@
 				C6B7FABB18D8BB8800FB19F4 /* CCTiledMapObjectGroup.m in Sources */,
 				C6B7FBB818D8BB8900FB19F4 /* vec3.c in Sources */,
 				C6B7FCA918D8C0F700FB19F4 /* Game.m in Sources */,
+				C612C7311957B723009C5964 /* GameOver.m in Sources */,
 				C6B7FA3B18D8BB8600FB19F4 /* CCLayoutBox.m in Sources */,
 				C6B7FA3818D8BB8600FB19F4 /* CCLayout.m in Sources */,
 				C6B7FB5B18D8BB8900FB19F4 /* OALSuspendHandler.m in Sources */,

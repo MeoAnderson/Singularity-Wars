@@ -12,8 +12,8 @@
 
 
 //TAREFAS PARA HOJE 22/06/14
-//Joysticks!! - UPDATE: vamos lá meter esta merda a trabalhar
-//Colisões!!
+//Joysticks!! - DONE
+//Colisões!! - Vamo lá
 //Cleanup!!
 
 
@@ -27,6 +27,9 @@
 	return [[self alloc] init];
     
 }
+
+@synthesize ghost;
+
 
 
 - (void) background {
@@ -96,12 +99,13 @@
     
     }
 
-
-- (void) initEnemies {
+/*
+- (void) animateGhost {
+    
     
     CCSprite* ghost = [CCSprite spriteWithImageNamed:@"enemy.png"];
     ghost.position = ccp(800,500);
-    /*
+
      int minY = enemy.contentSize.height / 2;// Variable for size
      int maxY = self.contentSize.height - enemy.contentSize.height / 2;
      int rangeY = maxY - minY;
@@ -117,88 +121,114 @@
      CCAction *actionRemove = [CCActionRemove action];
      
      [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
-     */
+
     
-    // Para aplicar fade in e out ao Ghost
+    // Fade in and out effect for the ghost
     id ghostFadeOut = [CCActionFadeOut actionWithDuration:0.5];
     id ghostFadeIn = [CCActionFadeIn actionWithDuration:0.5];
     id ghostFadeOutIn = [CCActionSequence actionOne:ghostFadeOut two:ghostFadeIn];
     id repeatGhostFadeOutIn = [CCActionRepeatForever actionWithAction:ghostFadeOutIn];
     [ghost runAction:repeatGhostFadeOutIn];
     
-    // Para mover
-    //id moveEnemyToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(0,0)];
-    //[enemy runAction:moveEnemyToShipLocation];
+    // Move in direction of the Player's ship
+    //id moveGhostToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(x,y)];
+    //id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(finishedMoving:)]
+    //[ghost runAction:[CCSequence actions:moveGhostToShipLocation, actionMoveDone, nil]];
+
     
     
     
     [self addChild:ghost];
     
-    /*
+
      CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
      CCAction *actionRemove = [CCActionRemove action];
-     */
-    
-    // Enemy 2
-    CCSprite* enemy2 = [CCSprite spriteWithImageNamed:@"enemy2.png"];
-    enemy2.position = ccp(200,200);
-    
-    id enemy2Rotation = [CCActionRotateBy actionWithDuration:2 angle:360];
-    id repeatEnemy2Rotation = [CCActionRepeatForever actionWithAction:enemy2Rotation];
-    
-    [enemy2 runAction:repeatEnemy2Rotation];
-    [self addChild:enemy2];
-    
-    
-    
-    // Enemy 3
-    CCSprite* enemy3 = [CCSprite spriteWithImageNamed:@"enemy3.png"];
-    enemy3.position = ccp(400,400);
-    enemy3.scale = 0.7;
-    
-    id enemy3Rotation = [CCActionRotateBy actionWithDuration:1 angle:-360];
-    id repeatEnemy3Rotation = [CCActionRepeatForever actionWithAction:enemy3Rotation];
-    
-    
-    [enemy3 runAction:repeatEnemy3Rotation];
-    [self addChild:enemy3];
+
     
 }
+*/
+-(void) generateRandomCoordinates
+
+{
+  
+/*
+    x = arc4random() % 1536;
+    y = arc4random() & 2048;
+    
+    if(y < 50)
+    {
+        y = 100;
+    }
+    
+    if (x < 50)
+        
+    {
+        x = 100;
+    }
+    */
+}
+
+
+
+- (void) enemyCross {
+    
+    
+    // Cross enemy
+    
+    CCSprite* cross = [CCSprite spriteWithImageNamed:@"enemy2.png"];
+    cross.position = ccp(200,200);
+    
+    id crossRotation = [CCActionRotateBy actionWithDuration:2 angle:360];
+    id repeatCrossRotation = [CCActionRepeatForever actionWithAction:crossRotation];
+    
+    [cross runAction:repeatCrossRotation];
+    [self addChild:cross];
+    
+}
+
+- (void) enemyCork {
+    
+    // Cork enemy
+    
+    CCSprite* cork = [CCSprite spriteWithImageNamed:@"enemy3.png"];
+    cork.position = ccp(400,400);
+    cork.scale = 0.7;
+    
+    id corkRotation = [CCActionRotateBy actionWithDuration:1 angle:-360];
+    id repeatCorkRotation = [CCActionRepeatForever actionWithAction:corkRotation];
+    
+    
+    [cork runAction:repeatCorkRotation];
+    [self addChild:cork];
+
+    
+    
+}
+
+
 
 - (void) collisions {
     
     
     //TO BE RESEARCHED
     
-    //CCPhysicsBody* physicsMyShip = [[CCPhysicsBody alloc]init];
 
-   // physicsMyShip.affectedByGravity = NO;
-   // physicsMyShip.
 }
 
 
 - (void) labels {
     
     // The "time elapsed" label
-    CCLabelTTF* timeElapsed = [CCLabelTTF labelWithString:@"Time Elapsed: " fontName:@"technoid" fontSize:30];
+    CCLabelTTF* lifes = [CCLabelTTF labelWithString:@"Lifes: " fontName:@"technoid" fontSize:30];
 	
-	timeElapsed.outlineColor = [CCColor blackColor];
-	timeElapsed.outlineWidth = 1;
-	timeElapsed.shadowColor = [CCColor blackColor];
-	timeElapsed.shadowOffset = ccp(1,1);
-    timeElapsed.position = ccp(150,750);
-    [self addChild:timeElapsed];
+	lifes.outlineColor = [CCColor blackColor];
+	lifes.outlineWidth = 1;
+	lifes.shadowColor = [CCColor blackColor];
+	lifes.shadowOffset = ccp(1,1);
+    lifes.position = ccp(150,750);
+    [self addChild:lifes];
     
     
-    // The "score" label
-    CCLabelTTF* score = [CCLabelTTF labelWithString:@"Score: " fontName:@"technoid" fontSize:30];
-	
-	score.outlineColor = [CCColor blackColor];
-	score.outlineWidth = 1;
-	score.shadowColor = [CCColor blackColor];
-	score.shadowOffset = ccp(1,1);
-    score.position = ccp(85,700);
-    [self addChild:score];
     
     //-----------------------------------------------------------------------------------------------------------------------------------
     
@@ -213,6 +243,16 @@
     
 }
 
+- (void) GameOver {
+    
+    
+    
+    
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+// Background Music
 
 - (void) sound {
     
@@ -220,23 +260,13 @@
     [[OALSimpleAudio sharedInstance] playBg:@"game.m4a" loop:YES];
 }
 
-/*
--(void)shootWithRightJoystick { //called in tick method
-    if (rightJoystick.velocity.x != 0 && rightJoystick.velocity.y != 0) {
-        CCSprite* laser = [CCSprite spriteWithImageNamed:@"fire.png"];
-        laser.position = Ship.position;
-        [self addChild:laser z:10];
-        CGPoint velocity = rightJoystick.velocity;
-        CCLOG(@"%.5f //// %.5f",velocity.x,velocity.y);
-        velocity = ccpMult(ccpNormalize(velocity), 1000);
-        [laser runAction:[CCActionMoveBy actionWithDuration:3 position:velocity]];
-    }
-}
-*/
-// Update callback for every frame, responsible for updating the position of the ship as well as the shooting
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+// Update Callback, responsible for updating the position of the ship according the Left Joystick velocity, shooting with the right joystick, detecting collisions, etc...
 
  -(void) update:(CCTime)deltaTime {
-     
+   
      // Logic for updating the position of the ship at each frame
      
      CGPoint scaledVelocity = ccpMult(leftJoystick.velocity, 400);
@@ -245,31 +275,51 @@
      [Ship setPosition:newPosition];
      
      
+     
      // Logic for shooting lasers with the right joystick
+     
      
      if (rightJoystick.velocity.x != 0 && rightJoystick.velocity.y != 0)
      
      {
-         CCSpriteBatchNode* laser = [[CCSpriteBatchNode alloc]initWithFile:@"shoot.png" capacity:10];
-       
-         laser.position = Ship.position;
-         laser.anchorPoint = ccp(0,0);
-         [self addChild:laser z:100];
-         
-         
-         //CGRect laserRect = [laser boundingBox];
-         //CGRect enemyRect = [];
+
          
          
          CGPoint velocity = rightJoystick.velocity;
          CCLOG(@"%.5f //// %.5f",velocity.x,velocity.y);
-         velocity = ccpMult(ccpNormalize(velocity), 1000);
+         velocity = ccpMult(ccpNormalize(velocity), 1500);
+        
+         laser = [CCSprite spriteWithImageNamed:@"fire.png"];
+         laser.color = [CCColor redColor];
+         laser.position = Ship.position;
+         
          [laser runAction:[CCActionMoveBy actionWithDuration:1 position:velocity]];
+
+         }
+     
+     
+     //Detect collisions between Ship and Enemy
+     
+     if (CGRectIntersectsRect(ghost.boundingBox, Ship.boundingBox)) {
+         [[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
+         ghost.visible = NO;
+         Ship.visible = NO;
+         [Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
+         lifes--;
      }
      
+    // Detect collisions between lasers and enemies
+    /*
+     if (CGRectIntersectsRect(ghost.boundingBox, laser.boundingBox)) {
+         [[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
+         ghost.visible = NO;
+         laser.visible = YES;
+         //[Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
+         //lifes--;
 
+     }
+*/
  }
-
 - (id)init
 {
     // Apple recommend assigning self with supers return value
@@ -283,20 +333,27 @@
      
     Ship = [CCSprite spriteWithImageNamed:@"ship.png"];
     Ship.position = ccp(winSize.width/2,winSize.height/2);
+    
+    ghost = [CCSprite spriteWithImageNamed:@"enemy.png"];
+    ghost.position = ccp(800,500);
 
-   
+    
     // Calling in all previously defined functions
     
     [self background];
     [self particles];
     [self grid];
-    [self initEnemies];
+    [self enemyCross];
+    [self enemyCork];
     [self collisions];
     [self labels];
     [self sound];
     [self addChild:Ship];
+    //[self addChild:laser];
+    [self addChild:ghost];
     [self initJoystick];
     [self initJoystickShooting];
+    
     
     // Lifes logic
     

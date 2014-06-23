@@ -35,24 +35,36 @@
     CCLabelTTF* lblTime;
     float TimeInSec;
     
-    // Joysticks
+    // Ship
     CCSprite* Ship;
+    
+    
+    //Joysticks
     SneakyJoystick* leftJoystick;
     
     SneakyJoystick* rightJoystick;
+    
+    // Laser
+   CCSprite* laser;
+    
+    // Ghost enemy
+    CCSprite* ghost;
     
     // Collision
     BOOL isCollision;
     
     // Ship lifes
     int lifes;
+
     
-    // Enemy
-    CGRect ghost;
+    // Game Over
+    bool GameOver;
 
 }
 
 + (Game *)scene;
 - (id)init;
+
+@property (retain,nonatomic) CCSprite* ghost;
 
 @end
