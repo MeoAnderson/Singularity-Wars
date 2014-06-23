@@ -9,4 +9,6 @@ It features retina graphics, @ 60fps (until you start shooting lasers).
 
 It also supports notifications.
 
+Debug Android port *.apk also available.
+
 Bug fixes and suggestions are welcome!
