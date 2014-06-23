@@ -109,6 +109,10 @@
             "target": "grid.png"
         }, 
         {
+            "asset": "../../../Downloads/explosion.mp3", 
+            "target": "explosion.mp3"
+        }, 
+        {
             "asset": "Singularity Wars/Assets Singularity Wars/Textures/particle.png", 
             "target": "particle.png"
         }, 
@@ -916,6 +920,11 @@
                     "prefix": "Singularity Wars/Classes/", 
                     "suffix": "Game.h"
                 }, 
+                "GameOver.h": {
+                    "key": "GameOver.h", 
+                    "prefix": "Singularity Wars/Classes/", 
+                    "suffix": "GameOver.h"
+                }, 
                 "HelloWorldScene.h": {
                     "key": "HelloWorldScene.h", 
                     "prefix": "Singularity Wars/", 
@@ -1485,7 +1494,7 @@
             "type": "iquote"
         }, 
         {
-            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpqXNfM2/BUILT_PRODUCTS_DIR/include", 
+            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpB7sMTL/BUILT_PRODUCTS_DIR/include", 
             "type": "I"
         }, 
         {
@@ -1501,11 +1510,11 @@
             "type": "I"
         }, 
         {
-            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpqXNfM2/DERIVED_FILE_DIR/armv7", 
+            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpB7sMTL/DERIVED_FILE_DIR/armv7", 
             "type": "I"
         }, 
         {
-            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpqXNfM2/DERIVED_FILE_DIR", 
+            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpB7sMTL/DERIVED_FILE_DIR", 
             "type": "I"
         }
     ], 
@@ -1561,6 +1570,13 @@
             "header_paths": [], 
             "language": "objc", 
             "source": "Singularity Wars/Classes/Game.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "Singularity Wars/Classes/GameOver.m"
         }, 
         {
             "defines": {}, 

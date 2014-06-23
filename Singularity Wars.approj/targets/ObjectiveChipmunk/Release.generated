@@ -1,7 +1,7 @@
 {
     "assets": [
         {
-            "asset": "../../../../../var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpm6JPrX/TARGET_BUILD_DIR/libObjectiveChipmunk.a", 
+            "asset": "../../../../../var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpCx4dgw/TARGET_BUILD_DIR/libObjectiveChipmunk.a", 
             "target": "../../../../../../../../Users/vascopatricio/Desktop/DAAM/Singularity Wars/normal"
         }
     ], 
@@ -672,6 +672,11 @@
                     "prefix": "Singularity Wars/Classes/", 
                     "suffix": "Game.h"
                 }, 
+                "GameOver.h": {
+                    "key": "GameOver.h", 
+                    "prefix": "Singularity Wars/Classes/", 
+                    "suffix": "GameOver.h"
+                }, 
                 "HelloWorldScene.h": {
                     "key": "HelloWorldScene.h", 
                     "prefix": "Singularity Wars/", 
@@ -1241,7 +1246,7 @@
             "type": "iquote"
         }, 
         {
-            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpm6JPrX/BUILT_PRODUCTS_DIR/include", 
+            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpCx4dgw/BUILT_PRODUCTS_DIR/include", 
             "type": "I"
         }, 
         {
@@ -1253,11 +1258,11 @@
             "type": "I"
         }, 
         {
-            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpm6JPrX/DERIVED_FILE_DIR/armv7", 
+            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpCx4dgw/DERIVED_FILE_DIR/armv7", 
             "type": "I"
         }, 
         {
-            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpm6JPrX/DERIVED_FILE_DIR", 
+            "header_path": "/var/folders/tp/k91gy6vj3v9_bbbz1mzrlsq00000gn/T/tmpCx4dgw/DERIVED_FILE_DIR", 
             "type": "I"
         }
     ], 
