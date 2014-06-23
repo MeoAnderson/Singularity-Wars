@@ -19,7 +19,6 @@ It was written in Objective-C, with the following API's:\
 \
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
 \ls1\ilvl0\cf0 {\listtext	\'95	}Cocos2D V3 (Game Engine);\
-{\listtext	\'95	}Chipmunk Library (Physics);\
 {\listtext	\'95	}SneakyInput (for input handling).\
 \
 It was supposed to feature Game Center integration, and Push Notifications support. It is running at the iPad Retina native resolution (1536x2048, Landscape), at 60 frames per second. This game was designed to take advantage of a larger screen real-estate than mobile phones provide; as such, this was not built as an Universal binary (and is an iPad-only project).\
@@ -35,11 +34,14 @@ All the code and assets can be found at: github.com/MeoAnderson/Singularity-Wars
 \
 \
 \
+\pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural
 \ls1\ilvl0
-\b FUTURE WORK:
+\b \cf0 FUTURE WORK:
 \b0 \
 \
 A few features were not implemented because of technical constraints, namely the lack of access to the iTunes Connect service (which allows Game Center integration).\
 \
-TO ADD:\
-TBD: Push Notifications (local?)}
+Unfortunately, there are some important bugs which hamper the experience:\
+	- The enemy spawning isn't working, which means that a single;\
+	- Even though the location where the enemy appears is random, his movement in the scene is not;\
+	- As the lasers are sprites, every fired laser augments the draw calls, which eventually decreases the framerate. This can be fixed by creating a batch node with all the sprites (PVR compressed texture format).}

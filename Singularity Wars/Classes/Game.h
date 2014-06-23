@@ -32,6 +32,8 @@
 
 {
 
+    // Global variables
+    
     // Ship
     CCSprite* Ship;
     
@@ -54,6 +56,7 @@
     int lives;
     CCLabelTTF* livesLbl;
 
+
     // Game Over
     bool GameOver;
 
@@ -63,7 +66,7 @@
 - (id)init;
 
 @property (retain,nonatomic) CCSprite* ghost;
-@property (retain,nonatomic) CCSprite* cross;
-@property (retain,nonatomic) CCSprite* cork;
+//@property (retain,nonatomic) CCSprite* cross;
+//@property (retain,nonatomic) CCSprite* cork;
 
 @end

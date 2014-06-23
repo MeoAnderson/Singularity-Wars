@@ -11,11 +11,6 @@
 // -----------------------------------------------------------------------
 
 
-//TAREFAS PARA HOJE 22/06/14
-//Joysticks!! - DONE
-//Colisões!! - DONE
-//Cleanup!! -TDB
-
 
 #import "Game.h"
 
@@ -29,12 +24,12 @@
 }
 
 @synthesize ghost;
-@synthesize cork;
-@synthesize cross;
+//@synthesize cork;
+//@synthesize cross;
 
 
 
-
+// Add the background image
 - (void) background {
     
     CCSprite* background = [CCSprite spriteWithImageNamed:@"background3.png"];
@@ -42,7 +37,7 @@
     
 }
 
-
+// Add the Black Hole Particles
 - (void) particles {
     
     CGSize winSize = [CCDirector sharedDirector].viewSize;
@@ -52,6 +47,8 @@
     [self addChild:particlesSingularity];
     
 }
+
+// Add the grid image
 
 - (void) grid {
     
@@ -102,27 +99,6 @@
     
     }
 
--(void) generateRandomCoordinates
-
-{
-  
-/*
-    x = arc4random() % 1536;
-    y = arc4random() & 2048;
-    
-    if(y < 50)
-    {
-        y = 100;
-    }
-    
-    if (x < 50)
-        
-    {
-        x = 100;
-    }
-    */
-}
-
 
 /*
 - (void) enemyCross {
@@ -160,12 +136,12 @@
     
 }
 */
-- (void) labels {
-    
 
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+- (void) labels {
+ 
     
-    
-    //-----------------------------------------------------------------------------------------------------------------------------------
     
     // The "Pause" button
     
@@ -177,6 +153,9 @@
 
     
 }
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+// "Game Over" function, to be called when the "lives" variable reaches 0
 
 - (void) GameOver {
     
@@ -359,7 +338,7 @@
     
     CGSize winSize = [CCDirector sharedDirector].viewSize;
     
-    [self schedule:@selector(spawnRandomSprite:) interval:1.0];
+    //[self schedule:@selector(spawnRandomSprite:) interval:1.0];
     
 //-----------------------------------------------------------------------------------------------------------------------------------
     //Setup of the Ship sprite
@@ -393,11 +372,7 @@
     
     [ghost runAction:[CCActionSequence actionWithArray:@[actionMoveGhost,actionRemoveGhost]]];
     
-    if(ghost <= 0){
-        
-        
-    }
-/*
+    /*
 //-----------------------------------------------------------------------------------------------------------------------------------
     // Setup of the "Cork" sprite
     
