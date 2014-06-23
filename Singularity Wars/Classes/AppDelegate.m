@@ -18,7 +18,7 @@
 // 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    // Local Notifications here so they appear after the application has been closed
     
     UILocalNotification* notifications = [[UILocalNotification alloc]init];
     
@@ -38,7 +38,7 @@
 	// If you want more flexibility, you can configure Cocos2D yourself instead of calling setupCocos2dWithOptions:.
 	[self setupCocos2dWithOptions:@{
 		// Show the FPS and draw call label.
-		CCSetupShowDebugStats: @(YES),
+		CCSetupShowDebugStats: @(NO),
 		
 		// More examples of options you might want to fiddle with:
 		// (See CCAppDelegate.h for more information)

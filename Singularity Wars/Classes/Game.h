@@ -31,8 +31,7 @@
 @interface Game : CCScene
 
 {
-    
-    
+
     // Ship
     CCSprite* Ship;
     
@@ -52,10 +51,9 @@
     BOOL isCollision;
     
     // Ship lifes
-    int lifes;
-    CCLabelTTF* lifesLbl;
+    int lives;
+    CCLabelTTF* livesLbl;
 
-    
     // Game Over
     bool GameOver;
 
@@ -65,5 +63,7 @@
 - (id)init;
 
 @property (retain,nonatomic) CCSprite* ghost;
+@property (retain,nonatomic) CCSprite* cross;
+@property (retain,nonatomic) CCSprite* cork;
 
 @end

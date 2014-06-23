@@ -124,17 +124,17 @@
     [startButton setTarget:self selector:@selector(onStartClicked:)];
     [self addChild:startButton];
 	
-	
+	/*
 	// "Options" button
 	CCButton* optionsButton = [CCButton buttonWithTitle:@"Options" fontName:@"technoid" fontSize:45];
     optionsButton.position = ccp(winSize.width/2,winSize.height-500);
     [optionsButton setTarget:self selector:@selector(onOptionsClicked:)];
     [self addChild:optionsButton];
-		
+	*/	
 	
 	// "Credits" button
 	CCButton* creditsButton = [CCButton buttonWithTitle:@"Credits" fontName:@"technoid" fontSize:45];
-    creditsButton.position = ccp(winSize.width/2,winSize.height-600);
+    creditsButton.position = ccp(winSize.width/2,winSize.height-500);
     [creditsButton setTarget:self selector:@selector(onCreditsClicked:)];
     [self addChild:creditsButton];
 
@@ -204,14 +204,14 @@
 	[[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
 }
 
- 
+/*
 - (void)onOptionsClicked:(id)sender
 {
     // Go to Options Menu
     [[CCDirector sharedDirector] pushScene:[Options scene]];
 	[[OALSimpleAudio sharedInstance] playEffect:@"otherButton2_sfx.mp3"];
 }
-
+*/
 - (void)onCreditsClicked:(id)sender
 {
     // Go to Credits Menu

@@ -123,7 +123,7 @@
 	labelCocos2dCommunity.outlineWidth = 0.5;
 	labelCocos2dCommunity.shadowColor = [CCColor grayColor];
 	labelCocos2dCommunity.shadowOffset = ccp(1,1);
-    labelCocos2dCommunity.position = ccp(winSize.width/2,winSize.height-500);
+    labelCocos2dCommunity.position = ccp(winSize.width/2,winSize.height-470);
     [self addChild:labelCocos2dCommunity];
 
     

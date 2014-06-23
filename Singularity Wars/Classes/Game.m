@@ -29,6 +29,9 @@
 }
 
 @synthesize ghost;
+@synthesize cork;
+@synthesize cross;
+
 
 
 
@@ -99,54 +102,6 @@
     
     }
 
-/*
-- (void) animateGhost {
-    
-    
-    CCSprite* ghost = [CCSprite spriteWithImageNamed:@"enemy.png"];
-    ghost.position = ccp(800,500);
-
-     int minY = enemy.contentSize.height / 2;// Variable for size
-     int maxY = self.contentSize.height - enemy.contentSize.height / 2;
-     int rangeY = maxY - minY;
-     int randomY = (arc4random() % rangeY) + minY;
-     
-     enemy.position = CGPointMake(self.contentSize.width + enemy.contentSize.width/2, randomY);
-     
-     int minDuration = 2.0;
-     int maxDuration = 4.0;
-     int rangeDuration = maxDuration - minDuration;
-     int randomDuration = (arc4random() % rangeDuration) + minDuration;
-     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
-     CCAction *actionRemove = [CCActionRemove action];
-     
-     [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
-
-    
-    // Fade in and out effect for the ghost
-    id ghostFadeOut = [CCActionFadeOut actionWithDuration:0.5];
-    id ghostFadeIn = [CCActionFadeIn actionWithDuration:0.5];
-    id ghostFadeOutIn = [CCActionSequence actionOne:ghostFadeOut two:ghostFadeIn];
-    id repeatGhostFadeOutIn = [CCActionRepeatForever actionWithAction:ghostFadeOutIn];
-    [ghost runAction:repeatGhostFadeOutIn];
-    
-    // Move in direction of the Player's ship
-    //id moveGhostToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(x,y)];
-    //id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(finishedMoving:)]
-    //[ghost runAction:[CCSequence actions:moveGhostToShipLocation, actionMoveDone, nil]];
-
-    
-    
-    
-    [self addChild:ghost];
-    
-
-     CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
-     CCAction *actionRemove = [CCActionRemove action];
-
-    
-}
-*/
 -(void) generateRandomCoordinates
 
 {
@@ -169,7 +124,7 @@
 }
 
 
-
+/*
 - (void) enemyCross {
     
     
@@ -190,7 +145,7 @@
     
     // Cork enemy
     
-    CCSprite* cork = [CCSprite spriteWithImageNamed:@"enemy3.png"];
+    cork = [CCSprite spriteWithImageNamed:@"enemy3.png"];
     cork.position = ccp(400,400);
     cork.scale = 0.7;
     
@@ -204,16 +159,7 @@
     
     
 }
-
-
-
-- (void) collisions {
-    
-    
-
-}
-
-
+*/
 - (void) labels {
     
 
@@ -252,7 +198,7 @@
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 
-// Update Callback, responsible for updating the position of the ship according the Left Joystick velocity, shooting with the right joystick, detecting collisions, etc...
+// Update Callback, responsible for updating the position of the ship according the Left Joystick velocity, shooting with the right joystick, detecting collisions, updating enemy position
 
  -(void) update:(CCTime)deltaTime {
    
@@ -261,9 +207,9 @@
      CGSize winSize = [CCDirector sharedDirector].viewSize;
      
      
-     // "Lifes" Label, updated everytime the player loses a life
+     // "Lives" Label, updated everytime the player loses a life
      
-     [lifesLbl setString:[NSString stringWithFormat:@"Lifes: %i",lifes]];
+     [livesLbl setString:[NSString stringWithFormat:@"Lives: %i",lives]];
      
      
      
@@ -273,6 +219,11 @@
      CGPoint newPosition = ccp(Ship.position.x + scaledVelocity.x * deltaTime, Ship.position.y + scaledVelocity.y * deltaTime);
      
      [Ship setPosition:newPosition];
+     
+     
+     
+     //CCActionMoveTo* enemyMoveToShip = [CCActionMoveTo actionWithDuration:20 position:Ship.position];
+     //[ghost runAction:enemyMoveToShip];
      
      
      
@@ -295,25 +246,28 @@
 
          }
      
+//-----------------------------------------------------------------------------------------------------------------------------------
      
-     //Detect collisions between Ship and Enemy
+     //Detect collisions between Ship and Ghost
      
      if (CGRectIntersectsRect(ghost.boundingBox, Ship.boundingBox)) {
          [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
-         ghost.visible = NO;
          Ship.visible = NO;
          [ghost removeFromParentAndCleanup:YES];
+        
          [Ship stopAllActions];
          
          Ship.visible = YES;
          Ship.position = ccp(winSize.width/2,winSize.height/2);
          [Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
          
-         lifes--;
+         lives--;
          NSLog(@"You lost a life!");
+         ghost = nil;
      }
      
-    // Detect collisions between lasers and enemies
+     
+    // Detect collisions between lasers and Ghost
     
      if (CGRectIntersectsRect(ghost.boundingBox, laser.boundingBox)) {
          [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
@@ -322,15 +276,76 @@
          //laser.visible = YES;
 
      }
-
-     if(lifes <= 0){
-         
+//-----------------------------------------------------------------------------------------------------------------------------------
+ /*
+      // Detect collisions between Ship and Cork
+     
+     if (CGRectIntersectsRect(cork.boundingBox, Ship.boundingBox)) {
+         [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
+         cork.visible = NO;
+         Ship.visible = NO;
+         [cork removeFromParentAndCleanup:YES];
          [Ship stopAllActions];
+         
+         Ship.visible = YES;
+         Ship.position = ccp(winSize.width/2,winSize.height/2);
+         [Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
+         
+         lives--;
+         NSLog(@"You lost a life!");
+     }
+     
+     // Detect collisions between lasers and "Cork"
+     
+     if (CGRectIntersectsRect(cork.boundingBox, laser.boundingBox)) {
+         [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
+         cork.visible = NO;
+         [cork stopAllActions];
+         //laser.visible = YES;
+         
+     }
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+     
+      // Detect collisions between Ship and "Cross"
+     
+     if (CGRectIntersectsRect(cross.boundingBox, Ship.boundingBox)) {
+         [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
+         cross.visible = NO;
+         Ship.visible = NO;
+         [cross removeFromParentAndCleanup:YES];
+         [Ship stopAllActions];
+         
+         Ship.visible = YES;
+         Ship.position = ccp(winSize.width/2,winSize.height/2);
+         [Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
+         
+         lives--;
+         NSLog(@"You lost a life!");
+     }
+     
+     // Detect collisions between lasers and "Cross"
+     
+     if (CGRectIntersectsRect(cross.boundingBox, laser.boundingBox)) {
+         [[OALSimpleAudio sharedInstance] playEffect:@"explosion.mp3"];
+         cross.visible = NO;
+         [cross stopAllActions];
+         //laser.visible = YES;
+         
+     }
+*/
+//-----------------------------------------------------------------------------------------------------------------------------------
+     
+     // If "lives" reaches 0, load the "Game Over" scene
+
+     if(lives <= 0){
+         
          [self GameOver];
          
      }
-     
+
  }
+
 - (id)init
 {
     // Apple recommend assigning self with supers return value
@@ -340,38 +355,130 @@
      self.userInteractionEnabled = YES;
      self.multipleTouchEnabled = YES;
     
+    // Get window size, to help positioning
+    
     CGSize winSize = [CCDirector sharedDirector].viewSize;
-     
+    
+    [self schedule:@selector(spawnRandomSprite:) interval:1.0];
+    
+//-----------------------------------------------------------------------------------------------------------------------------------
+    //Setup of the Ship sprite
+    
     Ship = [CCSprite spriteWithImageNamed:@"ship.png"];
     Ship.position = ccp(winSize.width/2,winSize.height/2);
     
+//-----------------------------------------------------------------------------------------------------------------------------------
+    // Setup of the Ghost sprite
+    
+    
     ghost = [CCSprite spriteWithImageNamed:@"enemy.png"];
     ghost.position = ccp(800,500);
+    
+    
+    // Enemy with a random location and heading to the left
+    
+    int minYGhost = ghost.contentSize.height / 2;// Variable for size
+    int maxYGhost = self.contentSize.height - ghost.contentSize.height / 2;
+    int rangeYGhost = maxYGhost - minYGhost;
+    int randomYGhost = (arc4random() % rangeYGhost) + minYGhost;
+    
+    ghost.position = CGPointMake(self.contentSize.width + ghost.contentSize.width/2, randomYGhost);
+    
+    int minDurationGhost = 2.0;
+    int maxDurationGhost = 4.0;
+    int rangeDurationGhost = maxDurationGhost - minDurationGhost;
+    int randomDurationGhost = (arc4random() % rangeDurationGhost) + minDurationGhost;
+    CCAction *actionMoveGhost = [CCActionMoveTo actionWithDuration:randomDurationGhost position:CGPointMake(ghost.contentSize.width/2, randomYGhost)];
+    CCAction *actionRemoveGhost = [CCActionRemove action];
+    
+    [ghost runAction:[CCActionSequence actionWithArray:@[actionMoveGhost,actionRemoveGhost]]];
+    
+    if(ghost <= 0){
+        
+        
+    }
+/*
+//-----------------------------------------------------------------------------------------------------------------------------------
+    // Setup of the "Cork" sprite
+    
+    cork = [CCSprite spriteWithImageNamed:@"enemy3.png"];
+    cork.position = ccp(400,400);
+    cork.scale = 0.7;
 
+    // Enemy moving to player's position
     
-    lifes = 3;
+    int minYCork = cork.contentSize.height / 2;// Variable for size
+    int maxYCork = self.contentSize.height - cork.contentSize.height / 2;
+    int rangeYCork = maxYCork - minYCork;
+    int randomYCork = (arc4random() % rangeYCork) + minYCork;
     
-    lifesLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lifes: %i",lifes] fontName:@"technoid" fontSize:30];
+    cork.position = CGPointMake(self.contentSize.width + cork.contentSize.width/2, randomYCork);
     
-    lifesLbl.outlineColor = [CCColor blackColor];
-    lifesLbl.outlineWidth = 1;
-    lifesLbl.shadowColor = [CCColor blackColor];
-    lifesLbl.shadowOffset = ccp(1,1);
-    lifesLbl.position = ccp(150,750);
+    int minDurationCork = 2.0;
+    int maxDurationCork = 4.0;
+    int rangeDurationCork = maxDurationCork - minDurationCork;
+    int randomDurationCork = (arc4random() % rangeDurationCork) + minDurationCork;
+    CCAction *actionMoveCork = [CCActionMoveTo actionWithDuration:randomDurationCork position:CGPointMake(cork.contentSize.width/2, randomYCork)];
+    CCAction *actionRemoveCork = [CCActionRemove action];
+
+    [cork runAction:[CCActionSequence actionWithArray:@[actionMoveCork,actionRemoveCork]]];
+    
+    
+//-----------------------------------------------------------------------------------------------------------------------------------
+    // Setup of the "Cross" sprite
+    
+    cork = [CCSprite spriteWithImageNamed:@"enemy3.png"];
+    cork.position = ccp(400,400);
+    cork.scale = 0.7;
+    
+    // Enemy moving to player's position
+    
+    int minYCross = cross.contentSize.height / 2;// Variable for size
+    int maxYCross = self.contentSize.height - cross.contentSize.height / 2;
+    int rangeYCross = maxYCross - minYCross;
+    int randomYCross = (arc4random() % rangeYCross) + minYCross;
+    
+    cross.position = CGPointMake(self.contentSize.width + cross.contentSize.width/2, randomYCross);
+    
+    int minDurationCross = 2.0;
+    int maxDurationCross = 4.0;
+    int rangeDurationCross = maxDurationCross - minDurationCross;
+    int randomDurationCross = (arc4random() % rangeDurationCross) + minDurationCross;
+    CCAction *actionMoveCross = [CCActionMoveTo actionWithDuration:randomDurationCross position:CGPointMake(cork.contentSize.width/2, randomYCross)];
+    CCAction *actionRemoveCross = [CCActionRemove action];
+    
+    [cork runAction:[CCActionSequence actionWithArray:@[actionMoveCross,actionRemoveCross]]];
+
+*/
+//-----------------------------------------------------------------------------------------------------------------------------------
+    // "Lives" variable
+    
+    lives = 3;
+    
+    
+    // Setup of the "lives" label, to be updated with each update callback
+    
+    livesLbl = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"Lives: %i",lives] fontName:@"technoid" fontSize:30];
+    
+    livesLbl.outlineColor = [CCColor blackColor];
+    livesLbl.outlineWidth = 1;
+    livesLbl.shadowColor = [CCColor blackColor];
+    livesLbl.shadowOffset = ccp(1,1);
+    livesLbl.position = ccp(150,750);
+    
     
     // Calling in all previously defined functions
     
     [self background];
     [self particles];
     [self grid];
-    [self enemyCross];
-    [self enemyCork];
-    [self collisions];
-    [self labels];
-    [self addChild:lifesLbl];
-    [self sound];
+    //[self addChild:cork];
+    //[self addChild:cross];
     [self addChild:Ship];
     [self addChild:ghost];
+    [self labels];
+    [self addChild:livesLbl];
+    [self sound];
     [self initJoystick];
     [self initJoystickShooting];
 
@@ -379,7 +486,6 @@
 	return self;
     
 }
-
 
 
 // Event for tapping the "Pause" button
@@ -393,3 +499,54 @@
 }
 
 @end
+
+
+
+/*
+ - (void) animateGhost {
+ 
+ 
+ CCSprite* ghost = [CCSprite spriteWithImageNamed:@"enemy.png"];
+ ghost.position = ccp(800,500);
+ 
+ int minY = enemy.contentSize.height / 2;// Variable for size
+ int maxY = self.contentSize.height - enemy.contentSize.height / 2;
+ int rangeY = maxY - minY;
+ int randomY = (arc4random() % rangeY) + minY;
+ 
+ enemy.position = CGPointMake(self.contentSize.width + enemy.contentSize.width/2, randomY);
+ 
+ int minDuration = 2.0;
+ int maxDuration = 4.0;
+ int rangeDuration = maxDuration - minDuration;
+ int randomDuration = (arc4random() % rangeDuration) + minDuration;
+ CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
+ CCAction *actionRemove = [CCActionRemove action];
+ 
+ [enemy runAction:[CCActionSequence actionWithArray:@[actionMove,actionRemove]]];
+ 
+ 
+ // Fade in and out effect for the ghost
+ id ghostFadeOut = [CCActionFadeOut actionWithDuration:0.5];
+ id ghostFadeIn = [CCActionFadeIn actionWithDuration:0.5];
+ id ghostFadeOutIn = [CCActionSequence actionOne:ghostFadeOut two:ghostFadeIn];
+ id repeatGhostFadeOutIn = [CCActionRepeatForever actionWithAction:ghostFadeOutIn];
+ [ghost runAction:repeatGhostFadeOutIn];
+ 
+ // Move in direction of the Player's ship
+ //id moveGhostToShipLocation = [CCActionMoveTo actionWithDuration:10 position:ccp(x,y)];
+ //id actionMoveDone = [CCCallFuncN actionWithTarget:self selector:@selector(finishedMoving:)]
+ //[ghost runAction:[CCSequence actions:moveGhostToShipLocation, actionMoveDone, nil]];
+ 
+ 
+ 
+ 
+ [self addChild:ghost];
+ 
+ 
+ CCAction *actionMove = [CCActionMoveTo actionWithDuration:randomDuration position:CGPointMake(enemy.contentSize.width/2, randomY)];
+ CCAction *actionRemove = [CCActionRemove action];
+ 
+ 
+ }
+ */
