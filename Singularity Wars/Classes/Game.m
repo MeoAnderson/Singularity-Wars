@@ -210,8 +210,6 @@
 - (void) collisions {
     
     
-    //TO BE RESEARCHED
-    
 
 }
 
@@ -288,12 +286,13 @@
          CGPoint velocity = rightJoystick.velocity;
          CCLOG(@"%.5f //// %.5f",velocity.x,velocity.y);
          velocity = ccpMult(ccpNormalize(velocity), 1500);
-        
+    
          laser = [CCSprite spriteWithImageNamed:@"fire.png"];
          laser.color = [CCColor redColor];
          laser.position = Ship.position;
          
          [laser runAction:[CCActionMoveBy actionWithDuration:1 position:velocity]];
+         [self addChild:laser];
 
          }
      
@@ -309,16 +308,14 @@
      }
      
     // Detect collisions between lasers and enemies
-    /*
+    
      if (CGRectIntersectsRect(ghost.boundingBox, laser.boundingBox)) {
          [[OALSimpleAudio sharedInstance] playEffect:@"startButton_sfx.mp3"];
          ghost.visible = NO;
-         laser.visible = YES;
-         //[Ship runAction:[CCActionBlink actionWithDuration:1.0 blinks:9]];
-         //lifes--;
+         //laser.visible = YES;
 
      }
-*/
+
  }
 - (id)init
 {
