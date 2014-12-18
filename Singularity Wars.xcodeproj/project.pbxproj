@@ -21,11 +21,6 @@
 		C62E025F192BFDF90019A471 /* SneakyJoystickSkinnedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0253192BFDF90019A471 /* SneakyJoystickSkinnedBase.m */; };
 		C62E0260192BFDF90019A471 /* SneakyJoystickSkinnedDPadExample.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0255192BFDF90019A471 /* SneakyJoystickSkinnedDPadExample.m */; };
 		C62E0261192BFDF90019A471 /* SneakyJoystickSkinnedJoystickExample.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0257192BFDF90019A471 /* SneakyJoystickSkinnedJoystickExample.m */; };
-		C62E0269192C07AB0019A471 /* CCSpriteWaveGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C62E0264192C07AB0019A471 /* CCSpriteWaveGenerator.m */; };
-		C62E026A192C07AB0019A471 /* heightfield_frag_shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0265192C07AB0019A471 /* heightfield_frag_shader.fsh */; };
-		C62E026B192C07AB0019A471 /* heightfield_vert_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0266192C07AB0019A471 /* heightfield_vert_shader.vsh */; };
-		C62E026C192C07AB0019A471 /* ripple_frag_shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0267192C07AB0019A471 /* ripple_frag_shader.fsh */; };
-		C62E026D192C07AB0019A471 /* ripple_vert_shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = C62E0268192C07AB0019A471 /* ripple_vert_shader.vsh */; };
 		C647D1FC192AB2630063B4DB /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FB192AB2630063B4DB /* ship.png */; };
 		C647D1FE192ABBCB0063B4DB /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FD192ABBCB0063B4DB /* enemy.png */; };
 		C647D200192ABC870063B4DB /* enemy2.png in Resources */ = {isa = PBXBuildFile; fileRef = C647D1FF192ABC870063B4DB /* enemy2.png */; };
@@ -261,7 +256,6 @@
 		C6B7FCB518D8C67000FB19F4 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = C6B7FCB418D8C67000FB19F4 /* fire.png */; };
 		C6B952A418DA06420033D224 /* wipeoutfury.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C6B952A318DA06420033D224 /* wipeoutfury.mp3 */; };
 		C6B952A718DA0A120033D224 /* HowToPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = C6B952A618DA0A120033D224 /* HowToPlay.m */; };
-		C6E03DE9195884FB00F51361 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C6E03DE8195884FB00F51361 /* explosion.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -300,12 +294,6 @@
 		C62E0255192BFDF90019A471 /* SneakyJoystickSkinnedDPadExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystickSkinnedDPadExample.m; sourceTree = "<group>"; };
 		C62E0256192BFDF90019A471 /* SneakyJoystickSkinnedJoystickExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SneakyJoystickSkinnedJoystickExample.h; sourceTree = "<group>"; };
 		C62E0257192BFDF90019A471 /* SneakyJoystickSkinnedJoystickExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SneakyJoystickSkinnedJoystickExample.m; sourceTree = "<group>"; };
-		C62E0263192C07AB0019A471 /* CCSpriteWaveGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSpriteWaveGenerator.h; sourceTree = "<group>"; };
-		C62E0264192C07AB0019A471 /* CCSpriteWaveGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCSpriteWaveGenerator.m; sourceTree = "<group>"; };
-		C62E0265192C07AB0019A471 /* heightfield_frag_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = heightfield_frag_shader.fsh; sourceTree = "<group>"; };
-		C62E0266192C07AB0019A471 /* heightfield_vert_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = heightfield_vert_shader.vsh; sourceTree = "<group>"; };
-		C62E0267192C07AB0019A471 /* ripple_frag_shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple_frag_shader.fsh; sourceTree = "<group>"; };
-		C62E0268192C07AB0019A471 /* ripple_vert_shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ripple_vert_shader.vsh; sourceTree = "<group>"; };
 		C647D1FB192AB2630063B4DB /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship.png; sourceTree = "<group>"; };
 		C647D1FD192ABBCB0063B4DB /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		C647D1FF192ABC870063B4DB /* enemy2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy2.png; sourceTree = "<group>"; };
@@ -821,19 +809,6 @@
 			name = SneakyInput;
 			sourceTree = "<group>";
 		};
-		C62E0262192C07890019A471 /* WaveGenerator */ = {
-			isa = PBXGroup;
-			children = (
-				C62E0263192C07AB0019A471 /* CCSpriteWaveGenerator.h */,
-				C62E0264192C07AB0019A471 /* CCSpriteWaveGenerator.m */,
-				C62E0265192C07AB0019A471 /* heightfield_frag_shader.fsh */,
-				C62E0266192C07AB0019A471 /* heightfield_vert_shader.vsh */,
-				C62E0267192C07AB0019A471 /* ripple_frag_shader.fsh */,
-				C62E0268192C07AB0019A471 /* ripple_vert_shader.vsh */,
-			);
-			name = WaveGenerator;
-			sourceTree = "<group>";
-		};
 		C6B049A4192BAF8F006F0C1A /* Particles */ = {
 			isa = PBXGroup;
 			children = (
@@ -925,8 +900,6 @@
 		C6B7F9E118D8BB8600FB19F4 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				C6D3EA4E1933AC92001CD25F /* ZJoystick */,
-				C62E0262192C07890019A471 /* WaveGenerator */,
 				C62E0243192BFDD40019A471 /* SneakyInput */,
 				C6B7FC5818D8C07A00FB19F4 /* Licenses */,
 				C6B7F9E218D8BB8600FB19F4 /* cocos2d */,
@@ -1849,13 +1822,6 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		C6D3EA4E1933AC92001CD25F /* ZJoystick */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ZJoystick;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1898,7 +1864,7 @@
 		C6B7F99418D8BB8500FB19F4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Vasco Patrício";
 				TargetAttributes = {
 					C6B7F99B18D8BB8500FB19F4 = {
@@ -1944,7 +1910,6 @@
 				C6B7FC8418D8C0F000FB19F4 /* cube.png in Resources */,
 				C6B7FC9A18D8C0F000FB19F4 /* testJoystiq.png in Resources */,
 				C6B7FBD318D8BB8A00FB19F4 /* LICENSE_CCBReader.txt in Resources */,
-				C62E026C192C07AB0019A471 /* ripple_frag_shader.fsh in Resources */,
 				C6B7F9C518D8BB8500FB19F4 /* Icon@2x.png in Resources */,
 				C6B7F9D718D8BB8500FB19F4 /* Icon-Small@2x.png in Resources */,
 				C6B7FC8D18D8C0F000FB19F4 /* logo_appicon2.png in Resources */,
@@ -1964,9 +1929,7 @@
 				C6B7FBBC18D8BB8900FB19F4 /* LICENSE_Kazmath.txt in Resources */,
 				C647D202192ABD4D0063B4DB /* enemy3.png in Resources */,
 				C6B7FC8718D8C0F000FB19F4 /* grid.png in Resources */,
-				C6E03DE9195884FB00F51361 /* explosion.mp3 in Resources */,
 				C6B7FC9818D8C0F000FB19F4 /* particle.png in Resources */,
-				C62E026D192C07AB0019A471 /* ripple_vert_shader.vsh in Resources */,
 				C6B7F9C718D8BB8500FB19F4 /* Icon-72.png in Resources */,
 				C6B7FB1518D8BB8800FB19F4 /* LICENSE_cocos2d.txt in Resources */,
 				C6B7FC8218D8C0F000FB19F4 /* background3.png in Resources */,
@@ -1982,12 +1945,10 @@
 				C6B7F9CD18D8BB8500FB19F4 /* Icon-76@2x.png in Resources */,
 				C6B049A6192BAFA4006F0C1A /* BlackHole-SingularityWars.plist in Resources */,
 				C6B7FC4118D8BB8A00FB19F4 /* LICENSE_Chipmunk.txt in Resources */,
-				C62E026B192C07AB0019A471 /* heightfield_vert_shader.vsh in Resources */,
 				C6B7FC8118D8C0F000FB19F4 /* Background2.png in Resources */,
 				C6B7FCB518D8C67000FB19F4 /* fire.png in Resources */,
 				C6B7F9DB18D8BB8500FB19F4 /* Icon-Spotlight-iOS7@2x.png in Resources */,
 				C61104FE19310635002C967C /* laser_shoot.mp3 in Resources */,
-				C62E026A192C07AB0019A471 /* heightfield_frag_shader.fsh in Resources */,
 				C6B7FC8B18D8C0F000FB19F4 /* appicon.png in Resources */,
 				C6B7F9CB18D8BB8500FB19F4 /* Icon-76.png in Resources */,
 				C6B7FBA118D8BB8900FB19F4 /* ChangeLog in Resources */,
@@ -2078,7 +2039,6 @@
 				C6B7FAE918D8BB8800FB19F4 /* base64.c in Sources */,
 				C6B7FB2818D8BB8800FB19F4 /* OALAudioTrack.m in Sources */,
 				C6B7FA6B18D8BB8700FB19F4 /* CCProgressNode.m in Sources */,
-				C62E0269192C07AB0019A471 /* CCSpriteWaveGenerator.m in Sources */,
 				C6B7FA5E18D8BB8700FB19F4 /* CCPhysicsBody.m in Sources */,
 				C6B7FAE318D8BB8800FB19F4 /* CCWindow.m in Sources */,
 				C6B7F9F818D8BB8600FB19F4 /* CCActionProgressTimer.m in Sources */,
@@ -2215,9 +2175,16 @@
 		C6B7FC5018D8BB8B00FB19F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2226,7 +2193,11 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2238,16 +2209,27 @@
 		C6B7FC5118D8BB8B00FB19F4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
 					"NS_BLOCK_ASSERTIONS=1",
 				);
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2260,7 +2242,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
@@ -2277,7 +2258,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				EXECUTABLE_EXTENSION = a;
 				EXECUTABLE_PREFIX = lib;
@@ -2294,7 +2274,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_ENTITLEMENTS = "Singularity Wars/Singularity Wars.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2323,7 +2302,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_ENTITLEMENTS = "Singularity Wars/Singularity Wars.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

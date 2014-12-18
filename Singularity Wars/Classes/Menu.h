@@ -15,7 +15,6 @@
 #import "cocos2d-ui.h"
 #import <GameKit/GameKit.h>
 #import <GameKit/GKLocalPlayer.h>
-#import "CCSpriteWaveGenerator.h"
 
 
 // -----------------------------------------------------------------------
