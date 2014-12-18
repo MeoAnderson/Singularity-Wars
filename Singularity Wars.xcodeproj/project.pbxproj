@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C602074F1A42611B0055FE28 /* Enemy.m in Sources */ = {isa = PBXBuildFile; fileRef = C602074E1A42611B0055FE28 /* Enemy.m */; };
+		C60207521A4261B00055FE28 /* Ship.m in Sources */ = {isa = PBXBuildFile; fileRef = C60207511A4261B00055FE28 /* Ship.m */; };
 		C61104FC19310155002C967C /* shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = C61104FB19310155002C967C /* shoot.png */; };
 		C61104FE19310635002C967C /* laser_shoot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C61104FD19310635002C967C /* laser_shoot.mp3 */; };
 		C612C7311957B723009C5964 /* GameOver.m in Sources */ = {isa = PBXBuildFile; fileRef = C612C7301957B722009C5964 /* GameOver.m */; };
@@ -269,6 +271,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C602074D1A42611B0055FE28 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy.h; path = Classes/Enemy.h; sourceTree = "<group>"; };
+		C602074E1A42611B0055FE28 /* Enemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Enemy.m; path = Classes/Enemy.m; sourceTree = "<group>"; };
+		C60207501A4261B00055FE28 /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ship.h; path = Classes/Ship.h; sourceTree = "<group>"; };
+		C60207511A4261B00055FE28 /* Ship.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ship.m; path = Classes/Ship.m; sourceTree = "<group>"; };
 		C61104FB19310155002C967C /* shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shoot.png; sourceTree = "<group>"; };
 		C61104FD19310635002C967C /* laser_shoot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = laser_shoot.mp3; sourceTree = "<group>"; };
 		C612C72F1957B722009C5964 /* GameOver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOver.h; path = Classes/GameOver.h; sourceTree = "<group>"; };
@@ -1695,6 +1701,10 @@
 				C6B7FCA618D8C0F700FB19F4 /* Pause.m */,
 				C612C72F1957B722009C5964 /* GameOver.h */,
 				C612C7301957B722009C5964 /* GameOver.m */,
+				C602074D1A42611B0055FE28 /* Enemy.h */,
+				C602074E1A42611B0055FE28 /* Enemy.m */,
+				C60207501A4261B00055FE28 /* Ship.h */,
+				C60207511A4261B00055FE28 /* Ship.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2050,6 +2060,7 @@
 				C6B7FBCF18D8BB8A00FB19F4 /* CCBLocalizationManager.m in Sources */,
 				C6B7FABB18D8BB8800FB19F4 /* CCTiledMapObjectGroup.m in Sources */,
 				C6B7FBB818D8BB8900FB19F4 /* vec3.c in Sources */,
+				C60207521A4261B00055FE28 /* Ship.m in Sources */,
 				C6B7FCA918D8C0F700FB19F4 /* Game.m in Sources */,
 				C612C7311957B723009C5964 /* GameOver.m in Sources */,
 				C6B7FA3B18D8BB8600FB19F4 /* CCLayoutBox.m in Sources */,
@@ -2095,6 +2106,7 @@
 				C6B7FB0118D8BB8800FB19F4 /* NSAttributedString+CCAdditions.m in Sources */,
 				C6B7FBC318D8BB8900FB19F4 /* CCBKeyframe.m in Sources */,
 				C6B7FB7D18D8BB8900FB19F4 /* CCControlTextureFactory.m in Sources */,
+				C602074F1A42611B0055FE28 /* Enemy.m in Sources */,
 				C6B7FCA818D8C0F700FB19F4 /* Credits.m in Sources */,
 				C6B7FA0218D8BB8600FB19F4 /* CCAnimationCache.m in Sources */,
 				C6B7FB8618D8BB8900FB19F4 /* CCTableView.m in Sources */,
