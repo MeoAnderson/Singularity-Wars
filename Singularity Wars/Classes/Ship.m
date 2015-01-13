@@ -6,10 +6,16 @@
 //  Copyright (c) 2014 Vasco Patrício. All rights reserved.
 //
 
-// Port ship to here
 
 #import "Ship.h"
 
-@implementation Ship
-
+@implementation Ship {
+    
+    
+    
+    
+    
+    
+    
+}
 @end

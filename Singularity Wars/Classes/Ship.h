@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "cocos2d.h"
 
-@interface Ship : NSObject
+@interface Ship : CCSprite {
+    
+    
+    // Player's ship
+    CCSprite* ship;
+    
+    
+}
+
+
 
 @end
+
